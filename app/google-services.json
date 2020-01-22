@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "320971317757",
+    "firebase_url": "https://afeto-team.firebaseio.com",
+    "project_id": "afeto-team",
+    "storage_bucket": "afeto-team.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320971317757:android:08a6f091f368f036877994",
+        "android_client_info": {
+          "package_name": "com.team.afeto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320971317757-q0lucad5qtcdjc015cpi51djmedgpt15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRBO7IIb7q4kdCeJSCpdfrsbsO0BmQV5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320971317757-q0lucad5qtcdjc015cpi51djmedgpt15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
