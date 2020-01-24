@@ -27,9 +27,11 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if(currentUser != null){
                     startActivity(new Intent(getBaseContext(), Dashboard_area_logada.class));
+                    finishAffinity();
+                }else {
+                    startActivity(new Intent(getBaseContext(), MainActivity.class));
+                    finish();
                 }
-                startActivity(new Intent(getBaseContext(), MainActivity.class));
-                finish();
             }
         }, 1500);
     }

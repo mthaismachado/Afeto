@@ -97,6 +97,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@color/background_edit_text"
+                    android:capitalize="words"
+                    android:padding="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/lblNome" />
 
@@ -117,6 +119,8 @@
                     android:id="@+id/cpf"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:inputType="number"
                     android:background="@color/background_edit_text"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/lblcpf" />
@@ -139,6 +143,7 @@
                     android:id="@+id/genero"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:padding="10dp"
                     android:background="@color/background_edit_text"
                     app:layout_constraintTop_toBottomOf="@id/lblgenero" />
 
@@ -159,6 +164,7 @@
                     android:id="@+id/estado"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:padding="10dp"
                     android:background="@color/background_edit_text"
                     app:layout_constraintTop_toBottomOf="@id/lblestado" />
 
@@ -179,6 +185,7 @@
                     android:id="@+id/cidade"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:padding="10dp"
                     android:background="@color/background_edit_text"
                     app:layout_constraintTop_toBottomOf="@id/lblcidade" />
 
@@ -207,12 +214,13 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/lbl_ajudar" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radio_voluntariado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:checked="false"
+                    style="@android:style/Widget.CompoundButton.RadioButton"
                     android:fontFamily="@font/hero_light"
                     android:text="Voluntariado"
                     android:textColor="@color/gray"
@@ -220,34 +228,37 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/lbl_radio" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radio_saude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero_light"
                     android:text="Saúde"
+                    style="@android:style/Widget.CompoundButton.RadioButton"
                     android:textColor="@color/gray"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/radio_voluntariado" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radio_doacoes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero_light"
                     android:text="Doações"
+                    style="@android:style/Widget.CompoundButton.RadioButton"
                     android:textColor="@color/gray"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/radio_saude" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radio_outros"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero_light"
                     android:text="Outro"
+                    style="@android:style/Widget.CompoundButton.RadioButton"
                     android:textColor="@color/gray"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
