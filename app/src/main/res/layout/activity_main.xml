@@ -2,18 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary"
+    android:background="@color/background_app"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <TextView
         android:id="@+id/ola"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="120dp"
+        android:fontFamily="@font/love_story_rough"
+        android:textColor="#8399a1"
         android:text="Olá!"
-        android:textSize="50sp"
+        android:textSize="70sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,17 +24,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
+        android:fontFamily="@font/hero_light"
         android:text="Como você quer começar?"
-        android:textSize="20sp"
+        android:textColor="#8399a1"
+        android:textSize="23sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ola" />
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:paddingTop="130dp"
-        android:src="@drawable/ic_launcher_background"
+        android:paddingTop="90dp"
+        android:src="@drawable/coracao"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ola" />
@@ -40,8 +44,12 @@
     <Button
         android:id="@+id/btn_quero_ajudar"
         android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:text="Quero ajudar!"
+        android:textSize="18sp"
+        android:fontFamily="@font/hero"
+        android:textColor="@android:color/white"
+        android:background="@color/button_main_screen"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_procurando_ajuda"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,9 +59,13 @@
     <Button
         android:id="@+id/btn_procurando_ajuda"
         android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/hero"
+        android:textColor="@android:color/white"
         android:text="Estou procurando ajuda!"
-        android:layout_marginBottom="50dp"
+        android:textSize="18sp"
+        android:background="@color/button_main_screen"
+        android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

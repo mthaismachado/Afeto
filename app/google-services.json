@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "320971317757-3h9rj0tdv3h6n7mpl7hmp9fh7d6c59pn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.team.afeto",
+            "certificate_hash": "e5cbb8689608cb21164a1fda790571087e4e5a52"
+          }
+        },
+        {
           "client_id": "320971317757-q0lucad5qtcdjc015cpi51djmedgpt15.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,14 +1,16 @@
-package com.team.afeto;
+package com.team.afeto.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Dashboard_preciso_ajuda extends AppCompatActivity {
+import com.team.afeto.R;
+
+public class Dashboard_area_logada extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard_preciso_ajuda);
+        setContentView(R.layout.activity_dashboard_area_logada);
     }
 }

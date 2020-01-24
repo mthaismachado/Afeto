@@ -1,4 +1,4 @@
-package com.team.afeto;
+package com.team.afeto.Activity;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+
+import com.team.afeto.R;
 
 public class MainActivity extends AppCompatActivity {
 

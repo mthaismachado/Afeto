@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Dashboard_area_logada">
+    android:background="@color/background_app"
+    tools:context=".Activity.Dashboard_area_logada">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerButtons"
         android:paddingTop="10dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -16,38 +17,47 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
-            android:layout_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:src="@drawable/ic_launcher_background" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_launcher_background"
-            android:layout_weight="1" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/coracao"
+             />
         <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:src="@drawable/ic_launcher_background"
-            android:layout_weight="1" />
-    </LinearLayout>
+             />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="320dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/lbl_quase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="120dp"
+            android:paddingTop="100dp"
+            android:fontFamily="@font/love_story_rough"
+            android:textColor="@color/gray"
             android:text="Menu"
-            android:textSize="40sp"
+            android:textSize="60sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,9 +66,9 @@
             android:layout_width="140dp"
             android:layout_height="150dp"
             android:layout_marginTop="50dp"
+            android:background="@color/background_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lbl_quase"
-            android:background="@android:color/darker_gray" />
+            app:layout_constraintTop_toBottomOf="@id/lbl_quase" />
 
         <ImageView
             android:id="@+id/img_icon_medicos"
@@ -79,6 +89,9 @@
             app:layout_constraintLeft_toLeftOf="@id/btn_medicos"
             app:layout_constraintRight_toRightOf="@id/btn_medicos"
             app:layout_constraintBottom_toBottomOf="@id/btn_medicos"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
             android:text="Médicos"/>
 
         <TextView
@@ -88,7 +101,7 @@
             android:layout_height="150dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lbl_quase"
-            android:background="@android:color/darker_gray" />
+            android:background="@color/background_edit_text" />
 
         <ImageView
             android:id="@+id/img_icon_doacoes"
@@ -105,6 +118,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
             android:textSize="20sp"
             app:layout_constraintLeft_toLeftOf="@id/btn_doacoes"
             app:layout_constraintRight_toRightOf="@id/btn_doacoes"
@@ -115,11 +131,10 @@
             android:id="@+id/btn_financeiro"
             android:layout_width="140dp"
             android:layout_height="150dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_medicos"
-
-            android:background="@android:color/darker_gray"
+            android:background="@color/background_edit_text"
             android:layout_gravity="center"/>
 
         <ImageView
@@ -138,6 +153,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:textSize="20sp"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@id/btn_financeiro"
             app:layout_constraintRight_toRightOf="@id/btn_financeiro"
             app:layout_constraintBottom_toBottomOf="@id/btn_financeiro"
@@ -147,11 +165,10 @@
             android:id="@+id/btn_forum"
             android:layout_width="140dp"
             android:layout_height="150dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_doacoes"
-
-            android:background="@android:color/darker_gray"
+            android:background="@color/background_edit_text"
             android:layout_gravity="center"/>
 
         <ImageView
@@ -170,6 +187,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:textSize="20sp"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@id/btn_forum"
             app:layout_constraintRight_toRightOf="@id/btn_forum"
             app:layout_constraintBottom_toBottomOf="@id/btn_forum"
