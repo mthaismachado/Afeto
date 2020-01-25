@@ -19,6 +19,7 @@ public class Dashboard_area_logada extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard_area_logada);
 
         btn_Perfil = findViewById(R.id.btn_perfil);
+        btn_Perfil.setOnClickListener(irPerfil);
     }
 
     private View.OnClickListener irPerfil = new View.OnClickListener() {
