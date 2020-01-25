@@ -181,7 +181,7 @@
             android:layout_marginTop="20dp"
             android:paddingTop="10dp"
             android:paddingLeft="30dp"
-            android:text="Descricao do Perfil"
+            android:text="Aqui vai o seu perfil \nConta um pouquinho sobre você para que as meninas possam saber o que você faz, como você quer ajudar, o que você gosta de fazer... E mais o que você quiser :)"
             android:fontFamily="@font/hero_light"
             android:textStyle="bold"
             android:textColor="@color/gray"
