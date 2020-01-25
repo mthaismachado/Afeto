@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,6 +48,9 @@ public class PerfilActivity extends AppCompatActivity {
     private CircleImageView profile_Image;
     private Uri uri;
 
+    FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +70,13 @@ public class PerfilActivity extends AppCompatActivity {
 
         btn_Arrow_Back.setOnClickListener(arrow_back);
 
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        db = FirebaseFirestore.getInstance();
+
         //TODO: Ver a possibilidade de colcoar os ícones ao lado do TextView.
         //TODO: Implementar o firebase Storage para upload de imagem(ver bibilioteca para fazer crop) e ver como referenciar a foto do storage no firestore.
-        //TODO: Vai fazer a edição do perfil ?? Se for, colocar o botão de editar ao lado da foto.
 
         preencherTela();
     }
@@ -81,6 +90,9 @@ public class PerfilActivity extends AppCompatActivity {
         //lbl_Telefone.setText(document.getData().get("nome").toString());
         lbl_Estado.setText(usuario.getEstado());
         lbl_ComoAjuda.setText(usuario.getComoAjuda().toString());
+        if(usuario.getUri_perfil() != null){
+            profile_Image.setImageURI(usuario.getUri_perfil());
+        }
 
     }
 
@@ -108,11 +120,32 @@ public class PerfilActivity extends AppCompatActivity {
         if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
             CropImage.ActivityResult  result = CropImage.getActivityResult(data);
             if(resultCode == RESULT_OK){
+                Usuario usuario = UsuarioSingleton.getUsuario();
+                usuario.setUri_perfil(result.getUri());
+                UsuarioSingleton.setUsuario(usuario);
                 profile_Image.setImageURI(result.getUri());
                 Toast.makeText(this, "Imagem atualizada com sucesso", Toast.LENGTH_SHORT).show();
             }
         }
 
+    }
+
+    private void gravarImagemPerfil(final Usuario usuario){
+        FirebaseUser user = mAuth.getCurrentUser();
+        db.collection("users").document(user.getUid())
+                .set(usuario)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PerfilActivity.this, "Não conseguimos salvar a sua foto :(", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void startCrop(Uri imageuri){

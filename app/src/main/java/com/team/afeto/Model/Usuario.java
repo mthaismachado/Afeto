@@ -1,5 +1,7 @@
 package com.team.afeto.Model;
 
+import android.net.Uri;
+
 import java.util.List;
 
 public class Usuario {
@@ -11,6 +13,7 @@ public class Usuario {
     private String cidade;
     private String email;
     private List<String> comoAjuda;
+    private Uri uri_perfil;
 
     public String getEmail() {
         return email;
@@ -66,5 +69,13 @@ public class Usuario {
 
     public void setComoAjuda(List<String> comoAjuda) {
         this.comoAjuda = comoAjuda;
+    }
+
+    public Uri getUri_perfil() {
+        return uri_perfil;
+    }
+
+    public void setUri_perfil(Uri uri_perfil) {
+        this.uri_perfil = uri_perfil;
     }
 }

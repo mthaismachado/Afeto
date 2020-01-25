@@ -62,8 +62,11 @@ public class SplashActivity extends AppCompatActivity {
                     if (document.exists()) {
                         usuario = new Usuario();
                         usuario.setNome(document.getData().get("nome").toString());
+                        usuario.setCpf(document.getData().get("cpf").toString());
+                        usuario.setGenero(document.getData().get("genero").toString());
                         usuario.setEmail(document.getData().get("email").toString());
                         usuario.setEstado(document.getData().get("estado").toString());
+                        usuario.setCidade(document.getData().get("cidade").toString());
                         String comoAjuda = document.getData().get("comoAjuda").toString();
                         usuario.setComoAjuda(Arrays.asList(comoAjuda.substring(1, comoAjuda.length()-1).split(",")));
                         UsuarioSingleton.setUsuario(usuario);

@@ -49,22 +49,21 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="350dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:src="@drawable/coracao"
-        app:civ_border_width="2dp"
-        app:civ_border_color="@color/background_app"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="80dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/coracao"
+            app:civ_border_color="@color/background_app"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lbl_nome_completo"
@@ -141,7 +140,7 @@
             android:layout_marginTop="20dp"
             android:paddingTop="10dp"
             android:paddingLeft="30dp"
-            android:text="Telefone do Usuario"
+            android:text="Telefone"
             android:fontFamily="@font/hero_light"
             android:textStyle="bold"
             android:textColor="@color/gray"

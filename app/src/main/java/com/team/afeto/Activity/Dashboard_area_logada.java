@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.team.afeto.Helper.UsuarioSingleton;
 import com.team.afeto.R;
 
 public class Dashboard_area_logada extends AppCompatActivity {
@@ -25,7 +26,9 @@ public class Dashboard_area_logada extends AppCompatActivity {
     private View.OnClickListener irPerfil = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
+            if(UsuarioSingleton.getUsuario() != null){
+                startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
+            }
         }
     };
 }
