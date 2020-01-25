@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -33,14 +34,22 @@ public class CadastroActivity extends AppCompatActivity implements Validator.Val
     private EditText cpf;
 
     private EditText genero;
+    @Length(min = 5, message = "Qual o estado que você mora?")
     private EditText estado;
+
+    @Length(min = 5, message = "Qual a cidade que você mora?")
     private EditText cidade;
+
     private CheckBox check_voluntariado;
     private CheckBox check_saude;
     private CheckBox check_doacoes;
     private CheckBox check_outros;
+
     private Button btn_Enviar;
+    private ImageView btn_Arrow_Back;
+
     private List<String> comoAjuda = new ArrayList<>();
+
     private Validator validator;
 
     @Override
@@ -59,14 +68,19 @@ public class CadastroActivity extends AppCompatActivity implements Validator.Val
         check_doacoes = findViewById(R.id.radio_doacoes);
         check_outros = findViewById(R.id.radio_outros);
 
+        btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
+        btn_Arrow_Back.setOnClickListener(arrowBack);
+
         //Mascara CPF
         SimpleMaskFormatter cpf_mask = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
         MaskTextWatcher mtw = new MaskTextWatcher(cpf, cpf_mask);
         cpf.addTextChangedListener(mtw);
 
+        //Validator
         validator = new Validator(this);
         validator.setValidationListener(this);
 
+        //Button Enviar
         btn_Enviar = findViewById(R.id.btn_enviar);
         btn_Enviar.setOnClickListener(irLogin);
     }
@@ -74,11 +88,26 @@ public class CadastroActivity extends AppCompatActivity implements Validator.Val
     private View.OnClickListener irLogin = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            validator.validate();
+            extrairOpcoesRadio();
+            if(comoAjuda.size() == 0){
+                Toast.makeText(CadastroActivity.this, "Selecione pelo menos uma opção de ajuda!", Toast.LENGTH_SHORT).show();
+            }else{
+                validator.validate();
+            }
         }
     };
 
+    private View.OnClickListener arrowBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onBackPressed();
+        }
+    };
+
+
+
     private void extrairOpcoesRadio(){
+        comoAjuda.clear();
       if(check_voluntariado.isChecked()){
           comoAjuda.add(check_voluntariado.getText().toString());
       }
@@ -101,8 +130,6 @@ public class CadastroActivity extends AppCompatActivity implements Validator.Val
         usuario.setGenero(genero.getText().toString());
         usuario.setEstado(estado.getText().toString());
         usuario.setCidade(cidade.getText().toString());
-
-        extrairOpcoesRadio();
 
         usuario.setComoAjuda(comoAjuda);
         UsuarioSingleton.setUsuario(usuario);

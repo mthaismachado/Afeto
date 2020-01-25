@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_login;
     private EditText email;
     private EditText senha;
+    private ImageView btn_Arrow_Back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,10 @@ public class LoginActivity extends AppCompatActivity {
         senha = findViewById(R.id.senha);
 
         btn_login = findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(acaoLogar);
+
+        btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
+        btn_Arrow_Back.setOnClickListener(arrowBack);
 
 
         // Initialize Firebase Auth
@@ -44,6 +50,12 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             fazerLogin(email.getText().toString(), senha.getText().toString());
+        }
+    };
+    private View.OnClickListener arrowBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onBackPressed();
         }
     };
 

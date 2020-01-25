@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,6 +39,7 @@ public class SingUpActivity extends AppCompatActivity implements Validator.Valid
     @Length(min = 8, message = "Precisa ter 8 dígitos")
     private EditText senha;
     private Validator validator;
+    private ImageView btn_Arrow_Back;
 
     FirebaseFirestore db;
 
@@ -53,6 +55,9 @@ public class SingUpActivity extends AppCompatActivity implements Validator.Valid
 
         email = findViewById(R.id.email);
         senha = findViewById(R.id.senha);
+
+        btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
+        btn_Arrow_Back.setOnClickListener(arrowBack);
 
         validator = new Validator(this);
         validator.setValidationListener(this);
@@ -108,6 +113,13 @@ public class SingUpActivity extends AppCompatActivity implements Validator.Valid
             }
         });
     }
+
+    private View.OnClickListener arrowBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onBackPressed();
+        }
+    };
 
     @Override
     public void onValidationSucceeded() {

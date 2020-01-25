@@ -17,11 +17,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
+            android:id="@+id/btn_arrow_back"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:paddingLeft="10dp"
+            android:src="@drawable/ic_arrow_back_black_24dp" />
 
         <ImageView
             app:layout_constraintTop_toTopOf="parent"
@@ -35,9 +37,10 @@
         <ImageView
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_launcher_background"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_settings_black_24dp"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -75,7 +78,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/carrinho_bebe_icon_24dp"
+            android:background="@drawable/ic_local_hospital_black_24dp"
             app:layout_constraintLeft_toLeftOf="@id/btn_medicos"
             app:layout_constraintRight_toRightOf="@id/btn_medicos"
             app:layout_constraintTop_toTopOf="@id/btn_medicos"
