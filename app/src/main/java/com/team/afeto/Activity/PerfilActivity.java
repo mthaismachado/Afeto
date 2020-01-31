@@ -4,11 +4,13 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -93,9 +97,9 @@ public class PerfilActivity extends AppCompatActivity {
         //lbl_Telefone.setText(document.getData().get("nome").toString());
         lbl_Estado.setText(usuario.getEstado());
         lbl_ComoAjuda.setText(usuario.getComoAjuda().toString());
-        if(usuario.getUri_perfil() != null){
+        if (usuario.getUri_perfil() != null) {
             profile_Image.setImageURI(usuario.getUri_perfil());
-        }else{
+        } else {
             try {
                 recuperaImagemPerfil();
             } catch (IOException e) {
@@ -104,38 +108,60 @@ public class PerfilActivity extends AppCompatActivity {
         }
 
     }
+
     private View.OnClickListener crop_perfil = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            CropImage.startPickImageActivity(PerfilActivity.this);
+            if(requestPermission()){
+                CropImage.startPickImageActivity(PerfilActivity.this);
+            }
         }
     };
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK){
-            Uri imageuri = CropImage.getPickImageResultUri(this, data);
-            if(CropImage.isReadExternalStoragePermissionsRequired(this, imageuri)){
-                uri = imageuri;
-                if(Build.VERSION.SDK_INT > 23){
-                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},0);
-                }
-            }else{
-                startCrop(imageuri);
+    private boolean requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("TAG", "Permission is granted");
+                return true;
+            } else {
+                Log.v("TAG", "Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
             }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("TAG", "Permission is granted");
+            return true;
         }
 
-        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
-            CropImage.ActivityResult  result = CropImage.getActivityResult(data);
-            if(resultCode == RESULT_OK){
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Uri imageuri = CropImage.getPickImageResultUri(this, data);
+            if (CropImage.isReadExternalStoragePermissionsRequired(this, imageuri)) {
+                uri = imageuri;
+                if (Build.VERSION.SDK_INT > 23) {
+                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+                }
+            } else {
+                startCrop(imageuri);
+            }
+
+        }
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
                 Usuario usuario = UsuarioSingleton.getUsuario();
                 Bitmap bitmap = null;
                 try {
-                    bitmap = Bitmap.createScaledBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), result.getUri()), 1024, 1024, true);
+                    bitmap = Bitmap.createScaledBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), result.getUri()), 1024, 1024, false);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Uri uri =  getImageUri(getApplicationContext(), bitmap);
+                Uri uri = getImageUri(getApplicationContext(), bitmap);
                 usuario.setUri_perfil(uri);
                 gravarImagemPerfil(usuario, uri);
                 UsuarioSingleton.setUsuario(usuario);
@@ -146,7 +172,7 @@ public class PerfilActivity extends AppCompatActivity {
 
     }
 
-    private void gravarImagemPerfil(final Usuario usuario, Uri uri){
+    private void gravarImagemPerfil(final Usuario usuario, Uri uri) {
         FirebaseUser user = mAuth.getCurrentUser();
         Uri file = uri;
         final StorageReference perfilRef = mStorageRef.child("perfil_images/" + user.getUid() + ".jpg");
@@ -166,7 +192,7 @@ public class PerfilActivity extends AppCompatActivity {
     }
 
     private void recuperaImagemPerfil() throws IOException {
-        if(UsuarioSingleton.getUsuario().getUri_perfil() == null){
+        if (UsuarioSingleton.getUsuario().getUri_perfil() == null) {
             FirebaseUser user = mAuth.getCurrentUser();
 
             final StorageReference perfilRef = mStorageRef.child("perfil_images/" + user.getUid() + ".jpg");
@@ -189,7 +215,7 @@ public class PerfilActivity extends AppCompatActivity {
         }
     }
 
-    private void startCrop(Uri imageuri){
+    private void startCrop(Uri imageuri) {
         CropImage.activity(imageuri)
                 .setMultiTouchEnabled(true)
                 .start(this);

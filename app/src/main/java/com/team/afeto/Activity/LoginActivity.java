@@ -20,20 +20,28 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Email;
+import com.mobsandgeeks.saripaar.annotation.Password;
 import com.team.afeto.Helper.UsuarioSingleton;
 import com.team.afeto.Model.Usuario;
 import com.team.afeto.R;
 
 import java.util.Arrays;
+import java.util.List;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements Validator.ValidationListener {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private Button btn_login;
+    @Email(message = "Digite um Email válido!")
     private EditText email;
+    @Password(min = 8, message = "Insira a sua senha de 8 ou mais digitos")
     private EditText senha;
     private ImageView btn_Arrow_Back;
+    private Validator validator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +57,9 @@ public class LoginActivity extends AppCompatActivity {
         btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
         btn_Arrow_Back.setOnClickListener(arrowBack);
 
+        //Validator
+        validator = new Validator(this);
+        validator.setValidationListener(this);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -58,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     private View.OnClickListener acaoLogar = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            fazerLogin(email.getText().toString(), senha.getText().toString());
+            validator.validate();
         }
     };
     private View.OnClickListener arrowBack = new View.OnClickListener() {
@@ -84,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Algo deu Errado.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Confere os dados e tenta novamente. Pode ser a Internet também!",
+                                    Toast.LENGTH_LONG).show();
                             //updateUI(null);
                         }
 
@@ -123,4 +134,23 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onValidationSucceeded() {
+        fazerLogin(email.getText().toString(), senha.getText().toString());
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(this);
+
+            // Display error messages ;)
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 }
