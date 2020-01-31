@@ -56,7 +56,7 @@
             android:id="@+id/lbl_quase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="80dp"
+            android:paddingTop="50dp"
             android:fontFamily="@font/love_story_rough"
             android:textColor="@color/gray"
             android:text="De que você precisa?"
@@ -68,7 +68,7 @@
             android:id="@+id/btn_medicos"
             android:layout_width="140dp"
             android:layout_height="150dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lbl_quase"
             android:background="@color/background_edit_text" />
@@ -99,7 +99,7 @@
 
         <TextView
             android:id="@+id/btn_doacoes"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:layout_width="140dp"
             android:layout_height="150dp"
             app:layout_constraintRight_toRightOf="parent"

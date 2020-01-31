@@ -11,7 +11,7 @@
         android:id="@+id/ola"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="120dp"
+        android:paddingTop="50dp"
         android:fontFamily="@font/love_story_rough"
         android:textColor="#8399a1"
         android:text="Olá!"
