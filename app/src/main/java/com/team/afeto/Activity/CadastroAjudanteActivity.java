@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -25,7 +24,7 @@ import com.team.afeto.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CadastroActivity extends AppCompatActivity implements Validator.ValidationListener {
+public class CadastroAjudanteActivity extends AppCompatActivity implements Validator.ValidationListener {
 
     @Length(min = 10, message = "Escreve seu nome completo :)")
     private EditText nomeCompleto;
@@ -55,7 +54,7 @@ public class CadastroActivity extends AppCompatActivity implements Validator.Val
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro);
+        setContentView(R.layout.activity_cadastro_ajudante);
 
         //FindView
         nomeCompleto = findViewById(R.id.nomecompleto);
@@ -90,7 +89,7 @@ public class CadastroActivity extends AppCompatActivity implements Validator.Val
         public void onClick(View v) {
             extrairOpcoesRadio();
             if(comoAjuda.size() == 0){
-                Toast.makeText(CadastroActivity.this, "Selecione pelo menos uma opção de ajuda!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CadastroAjudanteActivity.this, "Selecione pelo menos uma opção de ajuda!", Toast.LENGTH_SHORT).show();
             }else{
                 validator.validate();
             }

@@ -56,8 +56,6 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if (currentUser != null) {
                     getUserInfo(currentUser);
-                    startActivity(new Intent(getBaseContext(), Dashboard_area_logada.class));
-                    finishAffinity();
                 } else {
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
                     finish();
@@ -80,14 +78,15 @@ public class SplashActivity extends AppCompatActivity {
                         usuario.setEmail(document.getData().get("email").toString());
                         usuario.setEstado(document.getData().get("estado").toString());
                         usuario.setCidade(document.getData().get("cidade").toString());
-                        String comoAjuda = document.getData().get("comoAjuda").toString();
-                        usuario.setComoAjuda(Arrays.asList(comoAjuda.substring(1, comoAjuda.length() - 1).split(",")));
-//                        try {
-//                            recuperaImagemPerfil();
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
+                        try{
+                            String comoAjuda = document.getData().get("comoAjuda").toString();
+                            usuario.setComoAjuda(Arrays.asList(comoAjuda.substring(1, comoAjuda.length() - 1).split(",")));
+                        }catch(Exception e){
+                            usuario.setComoAjuda(null);
+                        }
                         UsuarioSingleton.setUsuario(usuario);
+                        startActivity(new Intent(getBaseContext(), Dashboard_area_logada.class));
+                        finishAffinity();
                     } else {
                         Log.d("TAG", "No such document");
                     }

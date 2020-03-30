@@ -96,7 +96,12 @@ public class PerfilActivity extends AppCompatActivity {
         lbl_Email.setText(usuario.getEmail());
         //lbl_Telefone.setText(document.getData().get("nome").toString());
         lbl_Estado.setText(usuario.getEstado());
-        lbl_ComoAjuda.setText(usuario.getComoAjuda().toString());
+        if(usuario.getComoAjuda() != null){
+            lbl_ComoAjuda.setText(usuario.getComoAjuda().toString());
+        }else{
+            lbl_ComoAjuda.setVisibility(View.GONE);
+        }
+
         if (usuario.getUri_perfil() != null) {
             profile_Image.setImageURI(usuario.getUri_perfil());
         } else {

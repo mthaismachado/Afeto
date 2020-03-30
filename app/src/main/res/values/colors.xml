@@ -3,7 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="background_app">#faf1e0</color>
+    <color name="background_app">#ffffff</color>
     <color name="button_main_screen">#8399a1</color>
     <color name="background_edit_text">#e8dbc5</color>
     <color name="gray">#8399a1</color>

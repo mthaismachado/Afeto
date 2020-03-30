@@ -120,8 +120,12 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
                         usuario.setEmail(document.getData().get("email").toString());
                         usuario.setEstado(document.getData().get("estado").toString());
                         usuario.setCidade(document.getData().get("cidade").toString());
-                        String comoAjuda = document.getData().get("comoAjuda").toString();
-                        usuario.setComoAjuda(Arrays.asList(comoAjuda.substring(1, comoAjuda.length()-1).split(",")));
+                        try{
+                            String comoAjuda = document.getData().get("comoAjuda").toString();
+                            usuario.setComoAjuda(Arrays.asList(comoAjuda.substring(1, comoAjuda.length() - 1).split(",")));
+                        }catch(Exception e){
+                            usuario.setComoAjuda(null);
+                        }
                         UsuarioSingleton.setUsuario(usuario);
                     } else {
                         Log.d("TAG", "No such document");

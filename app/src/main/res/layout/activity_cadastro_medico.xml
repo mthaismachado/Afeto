@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_app"
-    android:theme="@style/NoActionBar">
+    android:theme="@style/NoActionBar"
+    tools:context=".Activity.CadastroMedicoActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -60,229 +61,139 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/legal"
+                    android:id="@+id/medicos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/love_story_rough"
                     android:paddingTop="80dp"
-                    android:text="Legal!"
+                    android:text="Médicos"
                     android:textColor="@color/gray"
                     android:textSize="60sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/contemais"
+                    android:id="@+id/texto_medico"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="20dp"
-                    android:text="Conta pra gente um pouquinho mais sobre você preenchendo o cadastro abaixo"
+                    android:text="Se você é medico e se disponibiliza a abrir a sua agenda para consultas voluntárioas/populares, é só ir seguindo os passos."
                     android:textColor="@color/gray"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/legal" />
+                    app:layout_constraintTop_toBottomOf="@id/medicos" />
 
                 <TextView
-                    android:id="@+id/lblNome"
+                    android:id="@+id/lblEspecialidade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Nome Completo"
+                    android:text="Especialidade"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/contemais" />
+                    app:layout_constraintTop_toBottomOf="@id/texto_medico" />
 
                 <EditText
-                    android:id="@+id/nomecompleto"
+                    android:id="@+id/especialidade"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@color/background_edit_text"
-                    android:capitalize="words"
                     android:padding="10dp"
+                    android:maxLines="1"
+                    android:inputType="text|textCapSentences"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lblNome" />
+                    app:layout_constraintTop_toBottomOf="@id/lblEspecialidade" />
 
                 <TextView
-                    android:id="@+id/lblcpf"
+                    android:id="@+id/lblBairro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="CPF"
+                    android:text="Bairro"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/nomecompleto" />
+                    app:layout_constraintTop_toBottomOf="@id/especialidade" />
 
                 <EditText
-                    android:id="@+id/cpf"
+                    android:id="@+id/bairro"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:padding="10dp"
-                    android:inputType="number"
+                    android:maxLines="1"
+                    android:inputType="text|textCapSentences"
                     android:background="@color/background_edit_text"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lblcpf" />
+                    app:layout_constraintTop_toBottomOf="@id/lblBairro" />
 
 
                 <TextView
-                    android:id="@+id/lblgenero"
+                    android:id="@+id/lblDatas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Gênero"
+                    android:text="Datas"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cpf" />
+                    app:layout_constraintTop_toBottomOf="@id/bairro" />
 
                 <EditText
-                    android:id="@+id/genero"
+                    android:id="@+id/datas"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:padding="10dp"
+                    android:inputType="text|textCapSentences"
                     android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblgenero" />
+                    app:layout_constraintTop_toBottomOf="@id/lblDatas" />
 
                 <TextView
-                    android:id="@+id/lblestado"
+                    android:id="@+id/lblValores"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Estado"
+                    android:text="Valores"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/genero" />
+                    app:layout_constraintTop_toBottomOf="@id/datas" />
 
                 <EditText
-                    android:id="@+id/estado"
+                    android:id="@+id/valores"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:padding="10dp"
                     android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblestado" />
-
-                <TextView
-                    android:id="@+id/lblcidade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/hero"
-                    android:paddingTop="25dp"
-                    android:text="Cidade"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/font_size_cadastro_label"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/estado" />
-
-                <EditText
-                    android:id="@+id/cidade"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:hint="Se for gratuito não precisa."
                     android:padding="10dp"
-                    android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblcidade" />
-
-                <TextView
-                    android:id="@+id/lbl_ajudar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/hero"
-                    android:paddingTop="25dp"
-                    android:text="Como você quer ajudar?"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/font_size_cadastro_label"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cidade" />
-
-                <TextView
-                    android:id="@+id/lbl_radio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/hero"
-                    android:paddingTop="5dp"
-                    android:text="Para secionar mais de uma opçao"
-                    android:textColor="@color/gray"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_ajudar" />
-
-                <CheckBox
-                    android:id="@+id/radio_voluntariado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:checked="false"
-                    style="@android:style/Widget.CompoundButton.RadioButton"
-                    android:fontFamily="@font/hero_light"
-                    android:text="Voluntariado"
-                    android:textColor="@color/gray"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_radio" />
-
-                <CheckBox
-                    android:id="@+id/radio_saude"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/hero_light"
-                    android:text="Saúde"
-                    style="@android:style/Widget.CompoundButton.RadioButton"
-                    android:textColor="@color/gray"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radio_voluntariado" />
-
-                <CheckBox
-                    android:id="@+id/radio_doacoes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/hero_light"
-                    android:text="Doações"
-                    style="@android:style/Widget.CompoundButton.RadioButton"
-                    android:textColor="@color/gray"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radio_saude" />
-
-                <CheckBox
-                    android:id="@+id/radio_outros"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/hero_light"
-                    android:text="Outro"
-                    style="@android:style/Widget.CompoundButton.RadioButton"
-                    android:textColor="@color/gray"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radio_doacoes" />
+                    android:digits="1234567890.-"
+                    android:maxLines="1"
+                    android:inputType="numberDecimal"
+                    app:layout_constraintTop_toBottomOf="@id/lblValores" />
 
                 <Button
-                    android:id="@+id/btn_enviar"
+                    android:id="@+id/btn_concluido"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@color/gray"
-                    android:text="Enviar"
+                    android:text="Concluído"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radio_outros" />
-
+                    app:layout_constraintTop_toBottomOf="@id/valores" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

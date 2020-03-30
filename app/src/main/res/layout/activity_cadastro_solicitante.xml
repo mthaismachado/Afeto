@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_app"
+    android:theme="@style/NoActionBar"
+    tools:context=".Activity.CadastroSolicitanteActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/btn_arrow_back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:paddingLeft="10dp"
+                android:src="@drawable/ic_arrow_back_black_24dp" />
+
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/coracao"
+                />
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_settings_black_24dp"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/legal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/love_story_rough"
+                    android:paddingTop="80dp"
+                    android:text="Quase lá..."
+                    android:textColor="@color/gray"
+                    android:textSize="60sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/contemais"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hero"
+                    android:paddingTop="20dp"
+                    android:text="Agora vamos criar seu login para acessar o Afeto sempre que quiser"
+                    android:textColor="@color/gray"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/legal" />
+
+                <TextView
+                    android:id="@+id/lblNome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hero"
+                    android:paddingTop="25dp"
+                    android:text="Nome Completo"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/font_size_cadastro_label"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/contemais" />
+
+                <EditText
+                    android:id="@+id/nomecompleto"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/background_edit_text"
+                    android:capitalize="words"
+                    android:padding="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblNome" />
+
+                <TextView
+                    android:id="@+id/lblcpf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hero"
+                    android:paddingTop="25dp"
+                    android:text="CPF"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/font_size_cadastro_label"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/nomecompleto" />
+
+                <EditText
+                    android:id="@+id/cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:background="@color/background_edit_text"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblcpf" />
+
+
+                <TextView
+                    android:id="@+id/lblgenero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hero"
+                    android:paddingTop="25dp"
+                    android:text="Gênero"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/font_size_cadastro_label"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cpf" />
+
+                <EditText
+                    android:id="@+id/genero"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:background="@color/background_edit_text"
+                    app:layout_constraintTop_toBottomOf="@id/lblgenero" />
+
+                <TextView
+                    android:id="@+id/lblestado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hero"
+                    android:paddingTop="25dp"
+                    android:text="Estado"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/font_size_cadastro_label"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/genero" />
+
+                <EditText
+                    android:id="@+id/estado"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:background="@color/background_edit_text"
+                    app:layout_constraintTop_toBottomOf="@id/lblestado" />
+
+                <TextView
+                    android:id="@+id/lblcidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hero"
+                    android:paddingTop="25dp"
+                    android:text="Cidade"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/font_size_cadastro_label"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/estado" />
+
+                <EditText
+                    android:id="@+id/cidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:background="@color/background_edit_text"
+                    app:layout_constraintTop_toBottomOf="@id/lblcidade" />
+
+                <TextView
+                    android:id="@+id/lblemail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hero"
+                    android:paddingTop="25dp"
+                    android:text="Email"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/font_size_cadastro_label"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cidade" />
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:background="@color/background_edit_text"
+                    app:layout_constraintTop_toBottomOf="@id/lblemail" />
+
+                <TextView
+                    android:id="@+id/lblsenha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hero"
+                    android:paddingTop="25dp"
+                    android:text="Senha"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/font_size_cadastro_label"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/email" />
+
+                <EditText
+                    android:id="@+id/senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:background="@color/background_edit_text"
+                    app:layout_constraintTop_toBottomOf="@id/lblsenha" />
+
+                <Button
+                    android:id="@+id/btn_enviar"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/gray"
+                    android:text="Enviar"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/senha" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

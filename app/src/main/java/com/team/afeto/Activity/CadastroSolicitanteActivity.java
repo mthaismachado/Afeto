@@ -1,6 +1,7 @@
 package com.team.afeto.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,32 +30,45 @@ import com.mobsandgeeks.saripaar.annotation.Length;
 import com.team.afeto.Helper.UsuarioSingleton;
 import com.team.afeto.Model.Usuario;
 import com.team.afeto.R;
-
 import java.util.List;
 
-public class SingUpActivity extends AppCompatActivity implements Validator.ValidationListener {
+public class CadastroSolicitanteActivity extends AppCompatActivity implements Validator.ValidationListener {
+    @Length(min = 10, message = "Escreve seu nome completo :)")
+    private EditText nomeCompleto;
 
-    private Button btn_Login;
+    @Length(min = 14, message = "Acho que está faltando número")
+    private EditText cpf;
+
+    private EditText genero;
+    @Length(min = 5, message = "Qual o estado que você mora?")
+    private EditText estado;
+
+    @Length(min = 5, message = "Qual a cidade que você mora?")
+    private EditText cidade;
 
     @Email(message = "Digita um Email para fazer a sua conta")
     private EditText email;
     @Length(min = 8, message = "Precisa ter 8 dígitos")
     private EditText senha;
+
+    private Button btn_Enviar;
     private ImageView btn_Arrow_Back;
 
     private Validator validator;
-   private FirebaseFirestore db;
-   private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_singup);
+        setContentView(R.layout.activity_cadastro_solicitante);
 
-        db = FirebaseFirestore.getInstance();
-
-        btn_Login = findViewById(R.id.btn_login);
-        btn_Login.setOnClickListener(cadastrar);
+        //FindView
+        nomeCompleto = findViewById(R.id.nomecompleto);
+        cpf = findViewById(R.id.cpf);
+        genero = findViewById(R.id.genero);
+        estado = findViewById(R.id.estado);
+        cidade = findViewById(R.id.cidade);
 
         email = findViewById(R.id.email);
         senha = findViewById(R.id.senha);
@@ -60,19 +76,54 @@ public class SingUpActivity extends AppCompatActivity implements Validator.Valid
         btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
         btn_Arrow_Back.setOnClickListener(arrowBack);
 
+        //Mascara CPF
+        SimpleMaskFormatter cpf_mask = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
+        MaskTextWatcher mtw = new MaskTextWatcher(cpf, cpf_mask);
+        cpf.addTextChangedListener(mtw);
+
+        //Validator
         validator = new Validator(this);
         validator.setValidationListener(this);
 
+        //Button Enviar
+        btn_Enviar = findViewById(R.id.btn_enviar);
+        btn_Enviar.setOnClickListener(irLogin);
+
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+        db = FirebaseFirestore.getInstance();
     }
 
-    private View.OnClickListener cadastrar = new View.OnClickListener() {
+    private View.OnClickListener irLogin = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-           validator.validate();
+            validator.validate();
         }
     };
+
+    private View.OnClickListener arrowBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onBackPressed();
+        }
+    };
+
+
+    @Override
+    public void onValidationSucceeded() {
+        Usuario usuario = new Usuario();
+        usuario.setNome(nomeCompleto.getText().toString());
+        usuario.setCpf(cpf.getText().toString());
+        usuario.setGenero(genero.getText().toString());
+        usuario.setEstado(estado.getText().toString());
+        usuario.setCidade(cidade.getText().toString());
+
+        usuario.setComoAjuda(null);
+        UsuarioSingleton.setUsuario(usuario);
+
+        cadastrar(email.getText().toString(), senha.getText().toString());
+    }
 
     private void cadastrar(final String email, String senha){
         //Função que realiza o cadastro
@@ -95,7 +146,6 @@ public class SingUpActivity extends AppCompatActivity implements Validator.Valid
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(SingUpActivity.this, "Usuário criado com sucesso!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), CadastroProntoActivity.class));
                                     finishAffinity();
                                 }
@@ -103,28 +153,16 @@ public class SingUpActivity extends AppCompatActivity implements Validator.Valid
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(SingUpActivity.this, "Algo saiu errado :(", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(CadastroSolicitanteActivity.this, "Algo saiu errado :(", Toast.LENGTH_SHORT).show();
                                 }
                             });
                 } else {
                     Log.w("TAG", "createUserWithEmail:failure", task.getException());
-                    Toast.makeText(SingUpActivity.this, "Algo deu errado",
+                    Toast.makeText(CadastroSolicitanteActivity.this, "Algo deu errado",
                             Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    private View.OnClickListener arrowBack = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            onBackPressed();
-        }
-    };
-
-    @Override
-    public void onValidationSucceeded() {
-        cadastrar(email.getText().toString(), senha.getText().toString());
     }
 
     @Override
