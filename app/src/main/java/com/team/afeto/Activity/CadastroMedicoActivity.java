@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
@@ -39,6 +40,7 @@ public class CadastroMedicoActivity extends AppCompatActivity implements Validat
     private EditText mDatas;
     private EditText mValores;
     private Button mBtn_concluido;
+    private ImageView btn_Arrow_Back;
     //Firebase
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
@@ -55,6 +57,9 @@ public class CadastroMedicoActivity extends AppCompatActivity implements Validat
         mDatas = findViewById(R.id.datas);
         mValores = findViewById(R.id.valores);
         mBtn_concluido = findViewById(R.id.btn_concluido);
+
+        btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
+        btn_Arrow_Back.setOnClickListener(arrowBack);
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -107,6 +112,12 @@ public class CadastroMedicoActivity extends AppCompatActivity implements Validat
         }
     };
 
+    private View.OnClickListener arrowBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onBackPressed();
+        }
+    };
 
     @Override
     public void onValidationFailed(List<ValidationError> errors) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mobsandgeeks.saripaar.ValidationError;
@@ -23,6 +24,7 @@ public class FormularioBuscaMedicosActivity extends AppCompatActivity implements
     private EditText mBairro;
 
     private Button mBtn_buscar;
+    private ImageView btn_Arrow_Back;
 
     //Validator
     private Validator validator;
@@ -35,6 +37,10 @@ public class FormularioBuscaMedicosActivity extends AppCompatActivity implements
         mEspecialidades = findViewById(R.id.especialidade);
         mBairro = findViewById(R.id.bairro);
         mBtn_buscar = findViewById(R.id.btn_buscar);
+
+        btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
+        btn_Arrow_Back.setOnClickListener(arrowBack);
+
 
         validator = new Validator(this);
         validator.setValidationListener(this);
@@ -54,6 +60,13 @@ public class FormularioBuscaMedicosActivity extends AppCompatActivity implements
     public void onValidationSucceeded() {
         //TODO: Pensar na Lógica para redirecionar para a tela de listagem de médicos
     }
+
+    private View.OnClickListener arrowBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onBackPressed();
+        }
+    };
 
     @Override
     public void onValidationFailed(List<ValidationError> errors) {

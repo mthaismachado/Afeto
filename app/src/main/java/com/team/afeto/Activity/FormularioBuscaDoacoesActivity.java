@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.team.afeto.R;
 
@@ -16,6 +17,7 @@ public class FormularioBuscaDoacoesActivity extends AppCompatActivity {
 
     private Button mBtn_buscar;
     private AutoCompleteTextView editText;
+    private ImageView btn_Arrow_Back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +30,23 @@ public class FormularioBuscaDoacoesActivity extends AppCompatActivity {
         mBtn_buscar = findViewById(R.id.btn_buscar);
         mBtn_buscar.setOnClickListener(buscarDoacoes);
 
+        btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
+        btn_Arrow_Back.setOnClickListener(arrowBack);
+
+
     }
 
     private View.OnClickListener buscarDoacoes = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //TODO: Esperar a tela de doações =D
+        }
+    };
+
+    private View.OnClickListener arrowBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onBackPressed();
         }
     };
 
