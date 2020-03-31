@@ -13,7 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.CadastroMedicoActivity" android:theme="@style/NoActionBar"></activity>
+        <activity
+            android:name=".Activity.FormularioBuscaDoacoesActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Activity.DoacaoEnviadaActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Activity.FormularioBuscaMedicosActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Activity.CadastroMedicoActivity"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".Activity.CadastroProntoActivity"
             android:theme="@style/NoActionBar" />

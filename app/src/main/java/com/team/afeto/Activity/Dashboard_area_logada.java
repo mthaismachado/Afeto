@@ -51,7 +51,8 @@ public class Dashboard_area_logada extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(UsuarioSingleton.getUsuario().getComoAjuda() == null){
-               //Levar para a tela "pedido de doação"
+               Intent intent = new Intent(getApplicationContext(), FormularioBuscaDoacoesActivity.class);
+               startActivity(intent);
             }else{
                 //levar para a tela "Envio de Doação"
             }
@@ -62,8 +63,8 @@ public class Dashboard_area_logada extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(UsuarioSingleton.getUsuario().getComoAjuda() == null || !UsuarioSingleton.getUsuario().getComoAjuda().contains("Saude")){
-                Toast.makeText(Dashboard_area_logada.this, "Ir para filtro de médicos", Toast.LENGTH_SHORT).show();
-                //levar para a tela "Filtro de Médicos"
+                Intent intent = new Intent(getApplicationContext(), FormularioBuscaMedicosActivity.class);
+                startActivity(intent);
             }else{
                 Intent intent = new Intent(getApplicationContext(), CadastroMedicoActivity.class);
                 startActivity(intent);
