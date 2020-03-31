@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.team.afeto.R;
 
@@ -16,16 +17,16 @@ public class FormularioBuscaDoacoesActivity extends AppCompatActivity {
     private static final String[] ITENS_DOACAO = new String[]{"Higiene", "Casa", "Acessórios", "Roupas", "Bebê"};
 
     private Button mBtn_buscar;
-    private AutoCompleteTextView editText;
+    private Spinner mSpinner_categorias;
     private ImageView btn_Arrow_Back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_busca_doacoes);
 
-        editText = findViewById(R.id.edt_categorias);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ITENS_DOACAO );
-        editText.setAdapter(adapter);
+        mSpinner_categorias = findViewById(R.id.spinner_categorias);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, ITENS_DOACAO );
+        mSpinner_categorias.setAdapter(adapter);
 
         mBtn_buscar = findViewById(R.id.btn_buscar);
         mBtn_buscar.setOnClickListener(buscarDoacoes);
