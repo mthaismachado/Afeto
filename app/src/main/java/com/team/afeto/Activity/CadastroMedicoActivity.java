@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Length;
+import com.team.afeto.Helper.UsuarioSingleton;
 import com.team.afeto.Model.Medico;
 import com.team.afeto.R;
 
@@ -73,16 +74,17 @@ public class CadastroMedicoActivity extends AppCompatActivity implements Validat
     @Override
     public void onValidationSucceeded() {
         Medico medico = new Medico();
-        medico.setEspecialidade(mEspecialidades.getText().toString());
-        medico.setBairro(mBairro.getText().toString());
-        medico.setDatas(mDatas.getText().toString());
+        medico.setEspecialidade(mEspecialidades.getText().toString().trim());
+        medico.setBairro(mBairro.getText().toString().trim());
+        medico.setDatas(mDatas.getText().toString().trim());
 
         if(mValores.getText().toString().equals("") || mValores.getText().toString().equals("0")){
             medico.setValores("Gratuito");
         }else{
-            medico.setValores(mValores.getText().toString());
+            medico.setValores(mValores.getText().toString().trim());
         }
         medico.setUidUsuario(mAuth.getCurrentUser().getUid());
+        medico.setNome(UsuarioSingleton.getUsuario().getNome());
 
         gravarMedicoBase(medico);
     }

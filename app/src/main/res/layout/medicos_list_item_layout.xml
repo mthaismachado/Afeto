@@ -78,6 +78,7 @@
                 android:text="Telefone do Médico"/>
 
             <ImageView
+                android:id="@+id/btn_call"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 app:layout_constraintRight_toRightOf="parent"

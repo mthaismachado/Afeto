@@ -1,9 +1,12 @@
 package com.team.afeto.Helper;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,12 +35,19 @@ public class ListaMedicosRecyclerAdapter extends RecyclerView.Adapter<ListaMedic
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListaMedicosRecyclerAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull final ListaMedicosRecyclerAdapter.ViewHolder viewHolder, int position) {
         Medico medico = mLista.get(position);
         viewHolder.mTxtNome.setText(medico.getNome());
         viewHolder.mTxtEspecialidade.setText(medico.getEspecialidade());
         viewHolder.mTxtBairro.setText(medico.getBairro());
         viewHolder.mTxtTelefone.setText(medico.getTelefone());
+        viewHolder.mBtn_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + viewHolder.mTxtTelefone.getText().toString()));
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -51,6 +61,7 @@ public class ListaMedicosRecyclerAdapter extends RecyclerView.Adapter<ListaMedic
         public TextView mTxtEspecialidade;
         public TextView mTxtBairro;
         public TextView mTxtTelefone;
+        public ImageView mBtn_call;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -60,6 +71,7 @@ public class ListaMedicosRecyclerAdapter extends RecyclerView.Adapter<ListaMedic
             mTxtEspecialidade = (TextView) itemView.findViewById(R.id.lblEspecialidade);
             mTxtBairro = (TextView) itemView.findViewById(R.id.lblBairro);
             mTxtTelefone = (TextView) itemView.findViewById(R.id.lblTelefone);
+            mBtn_call = (ImageView) itemView.findViewById(R.id.btn_call);
 
 
         }

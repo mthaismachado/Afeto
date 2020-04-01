@@ -1,5 +1,7 @@
 package com.team.afeto.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,7 +10,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.team.afeto.Helper.ListaMedicosRecyclerAdapter;
 import com.team.afeto.Model.Medico;
 import com.team.afeto.R;
@@ -22,6 +34,7 @@ public class ListarMedicosActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
 
     private List<Medico> mlista;
+    FirebaseFirestore db;
 
     private ImageView btn_Arrow_Back;
 
@@ -30,31 +43,16 @@ public class ListarMedicosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_medicos);
 
+        db = FirebaseFirestore.getInstance();
+
         btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
         btn_Arrow_Back.setOnClickListener(arrowBack);
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Intent intent = getIntent();
-        String bairro = intent.getStringExtra("bairro");
-        String especialidade = intent.getStringExtra("especialidade");
+        realizaConsultaMedicos();
 
-        //TODO: Fazer a query e buscar no Firebase
-
-        mlista = new ArrayList<>();
-
-        for(int i = 0; i<=10; i++){
-            Medico medico = new Medico();
-            medico.setNome("Ramon Calou");
-            medico.setEspecialidade("Nutricionista");
-            medico.setBairro("Taquara");
-            medico.setTelefone("(21) 1234-5878");
-            mlista.add(medico);
-        }
-
-        adapter = new ListaMedicosRecyclerAdapter(getApplicationContext(), mlista);
-        mRecyclerView.setAdapter(adapter);
     }
 
     private View.OnClickListener arrowBack = new View.OnClickListener() {
@@ -63,4 +61,41 @@ public class ListarMedicosActivity extends AppCompatActivity {
             onBackPressed();
         }
     };
+
+    private void realizaConsultaMedicos(){
+        Intent intent = getIntent();
+        String bairro = intent.getStringExtra("bairro");
+        String especialidade = intent.getStringExtra("especialidade");
+        mlista = new ArrayList<>();
+
+        // Create a reference to the cities collection
+        CollectionReference medicosRef = db.collection("medicos");
+
+        medicosRef.whereEqualTo("bairro", bairro)
+                .whereEqualTo("especialidade", especialidade)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Medico medico = new Medico();
+                        medico.setNome(document.getString("nome"));
+                        medico.setBairro(document.getString("bairro"));
+                        medico.setEspecialidade(document.getString("especialidade"));
+                        medico.setTelefone(document.getString("telefone"));
+                        mlista.add(medico);
+                    }
+                } else {
+                    Toast.makeText(ListarMedicosActivity.this, "Tivemos problemas ao consultar", Toast.LENGTH_LONG).show();
+                }
+                adapter = new ListaMedicosRecyclerAdapter(getApplicationContext(), mlista);
+                mRecyclerView.setAdapter(adapter);
+            }
+        });
+
+        adapter = new ListaMedicosRecyclerAdapter(getApplicationContext(), mlista);
+        mRecyclerView.setAdapter(adapter);
+    }
 }
