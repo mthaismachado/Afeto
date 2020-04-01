@@ -32,6 +32,7 @@ public class CadastroProntoActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), Dashboard_area_logada.class);
             startActivity(intent);
+            finishAffinity();
         }
     };
 

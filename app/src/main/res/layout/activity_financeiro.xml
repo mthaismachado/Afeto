@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.FinanceiroActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_arrow_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/coracao"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_settings_black_24dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_medicos"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/financiero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/love_story_rough"
+            android:paddingTop="80dp"
+            android:text="Financeiro"
+            android:textColor="@color/gray"
+            android:textSize="60sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btn_pgastos"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/financiero" />
+
+        <TextView
+            android:id="@+id/img_plus1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:text="+"
+            android:textSize="@dimen/size_plus_financeiro"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_pgastos"
+            app:layout_constraintBottom_toBottomOf="@id/btn_pgastos"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="@id/btn_pgastos"
+            app:layout_constraintBottom_toBottomOf="@id/btn_pgastos"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
+            android:text="Principais gastos"
+            android:layout_marginStart="30dp" />
+
+        <TextView
+            android:id="@+id/btn_novaprioridades"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_pgastos" />
+
+        <TextView
+            android:id="@+id/img_plus2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:text="+"
+            android:textSize="@dimen/size_plus_financeiro"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_novaprioridades"
+            app:layout_constraintBottom_toBottomOf="@id/btn_novaprioridades"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="@id/btn_novaprioridades"
+            app:layout_constraintBottom_toBottomOf="@id/btn_novaprioridades"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
+            android:text="Novas prioridades"
+            android:layout_marginStart="30dp" />
+
+        <TextView
+            android:id="@+id/btn_consumoC"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_novaprioridades" />
+
+        <TextView
+            android:id="@+id/img_plus3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:text="+"
+            android:textSize="@dimen/size_plus_financeiro"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_consumoC"
+            app:layout_constraintBottom_toBottomOf="@id/btn_consumoC"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="@id/btn_consumoC"
+            app:layout_constraintBottom_toBottomOf="@id/btn_consumoC"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
+            android:text="Consumo Consciente"
+            android:layout_marginStart="30dp" />
+
+        <TextView
+            android:id="@+id/btn_medicoseeemedios"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_consumoC" />
+
+        <TextView
+            android:id="@+id/img_plus4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:text="+"
+            android:textSize="@dimen/size_plus_financeiro"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_medicoseeemedios"
+            app:layout_constraintBottom_toBottomOf="@id/btn_medicoseeemedios"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="@id/btn_medicoseeemedios"
+            app:layout_constraintBottom_toBottomOf="@id/btn_medicoseeemedios"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
+            android:text="Médicos e remédios"
+            android:layout_marginStart="30dp" />
+
+        <TextView
+            android:id="@+id/btn_naotiverrenda"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_medicoseeemedios" />
+
+        <TextView
+            android:id="@+id/img_plus5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:text="+"
+            android:textSize="@dimen/size_plus_financeiro"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_naotiverrenda"
+            app:layout_constraintBottom_toBottomOf="@id/btn_naotiverrenda"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="@id/btn_naotiverrenda"
+            app:layout_constraintBottom_toBottomOf="@id/btn_naotiverrenda"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textStyle="bold"
+            android:text="E se eu não tiver renda?"
+            android:layout_marginStart="30dp" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

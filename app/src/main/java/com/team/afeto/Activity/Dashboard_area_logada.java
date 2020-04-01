@@ -1,10 +1,15 @@
 package com.team.afeto.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.view.Gravity;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +24,8 @@ public class Dashboard_area_logada extends AppCompatActivity {
     private TextView mBtn_Doacoes;
     private TextView mBtn_Financeiro;
     private TextView mBtn_Forum;
+    private ConstraintLayout mConfig_screen;
+    private ImageView btn_Arrow_Back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,8 @@ public class Dashboard_area_logada extends AppCompatActivity {
         mBtn_Financeiro = findViewById(R.id.btn_financeiro);
         mBtn_Forum = findViewById(R.id.btn_forum);
 
+        btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
+
         mBtn_Perfil.setOnClickListener(irPerfil);
         mBtn_Doacoes.setOnClickListener(acaoBtnDoacoes);
         mBtn_Medicos.setOnClickListener(acaoBtnMedicos);
@@ -41,7 +50,7 @@ public class Dashboard_area_logada extends AppCompatActivity {
     private View.OnClickListener irPerfil = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(UsuarioSingleton.getUsuario() != null){
+            if (UsuarioSingleton.getUsuario() != null) {
                 startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
             }
         }
@@ -50,10 +59,10 @@ public class Dashboard_area_logada extends AppCompatActivity {
     private View.OnClickListener acaoBtnDoacoes = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(UsuarioSingleton.getUsuario().getComoAjuda() == null){
-               Intent intent = new Intent(getApplicationContext(), FormularioBuscaDoacoesActivity.class);
-               startActivity(intent);
-            }else{
+            if (UsuarioSingleton.getUsuario().getComoAjuda() == null) {
+                Intent intent = new Intent(getApplicationContext(), FormularioBuscaDoacoesActivity.class);
+                startActivity(intent);
+            } else {
                 //levar para a tela "Envio de Doação"
             }
         }
@@ -62,10 +71,10 @@ public class Dashboard_area_logada extends AppCompatActivity {
     private View.OnClickListener acaoBtnMedicos = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(UsuarioSingleton.getUsuario().getComoAjuda() == null || !UsuarioSingleton.getUsuario().getComoAjuda().contains("Saude")){
+            if (UsuarioSingleton.getUsuario().getComoAjuda() == null || !UsuarioSingleton.getUsuario().getComoAjuda().contains("Saude")) {
                 Intent intent = new Intent(getApplicationContext(), FormularioBuscaMedicosActivity.class);
                 startActivity(intent);
-            }else{
+            } else {
                 Intent intent = new Intent(getApplicationContext(), CadastroMedicoActivity.class);
                 startActivity(intent);
             }
@@ -75,11 +84,8 @@ public class Dashboard_area_logada extends AppCompatActivity {
     private View.OnClickListener acaoBtnFinanceiro = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(UsuarioSingleton.getUsuario().getComoAjuda() == null){
-                //Levar para a tela solicitante
-            }else{
-                //levar para a tela ajudante
-            }
+            Intent intent = new Intent(getApplicationContext(), FinanceiroActivity.class);
+            startActivity(intent);
         }
     };
 

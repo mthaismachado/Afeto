@@ -2,6 +2,7 @@ package com.team.afeto.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -58,7 +59,10 @@ public class FormularioBuscaMedicosActivity extends AppCompatActivity implements
 
     @Override
     public void onValidationSucceeded() {
-        //TODO: Pensar na Lógica para redirecionar para a tela de listagem de médicos
+        Intent intent = new Intent(getApplicationContext(), ListarMedicosActivity.class);
+        intent.putExtra("bairro", mBairro.getText().toString());
+        intent.putExtra("especialidade", mEspecialidades.getText().toString());
+        startActivity(intent);
     }
 
     private View.OnClickListener arrowBack = new View.OnClickListener() {

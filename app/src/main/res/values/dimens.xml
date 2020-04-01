@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="font_size_cadastro_label">20sp</dimen>
+    <dimen name="size_plus_financeiro">30sp</dimen>
 </resources>
