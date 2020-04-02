@@ -91,16 +91,12 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
                             getUserInfo(user);
                             startActivity(new Intent(getBaseContext(), Dashboard_area_logada.class));
                             finishAffinity();
-                            //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Confere os dados e tenta novamente. Pode ser a Internet também!",
                                     Toast.LENGTH_LONG).show();
-                            //updateUI(null);
                         }
-
-                        // ...
                     }
                 });
     }

@@ -63,7 +63,8 @@ public class Dashboard_area_logada extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), FormularioBuscaDoacoesActivity.class);
                 startActivity(intent);
             } else {
-                //levar para a tela "Envio de Doação"
+                Intent intent = new Intent(getApplicationContext(), CadastroDoacaoActivity.class);
+                startActivity(intent);
             }
         }
     };

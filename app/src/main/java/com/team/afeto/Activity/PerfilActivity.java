@@ -143,6 +143,7 @@ public class PerfilActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             Uri imageuri = CropImage.getPickImageResultUri(this, data);
             if (CropImage.isReadExternalStoragePermissionsRequired(this, imageuri)) {
@@ -162,11 +163,12 @@ public class PerfilActivity extends AppCompatActivity {
                 Usuario usuario = UsuarioSingleton.getUsuario();
                 Bitmap bitmap = null;
                 try {
-                    bitmap = Bitmap.createScaledBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), result.getUri()), 1024, 1024, false);
+                    bitmap = Bitmap.createScaledBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), result.getUri()), 800, 1024, false);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 Uri uri = getImageUri(getApplicationContext(), bitmap);
+                if(uri == null){uri = result.getUri();}
                 usuario.setUri_perfil(uri);
                 gravarImagemPerfil(usuario, uri);
                 UsuarioSingleton.setUsuario(usuario);
@@ -230,7 +232,11 @@ public class PerfilActivity extends AppCompatActivity {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-        return Uri.parse(path);
+        if(path == null){
+            return null;
+        }else{
+            return Uri.parse(path);
+        }
     }
 
     private View.OnClickListener arrow_back = new View.OnClickListener() {
