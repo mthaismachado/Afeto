@@ -44,7 +44,7 @@ public class ListaMedicosRecyclerAdapter extends RecyclerView.Adapter<ListaMedic
         viewHolder.mBtn_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + viewHolder.mTxtTelefone.getText().toString()));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "0" + viewHolder.mTxtTelefone.getText().toString()));
                 v.getContext().startActivity(intent);
             }
         });

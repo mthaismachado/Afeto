@@ -68,6 +68,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
     private Uri uri_foto1;
     private Uri uri_foto2;
     private CountDownTimer mCountDownTimer;
+    private ImageView btn_Arrow_Back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,9 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
         photo1.setOnClickListener(crop_perfil);
         photo2.setOnClickListener(crop_perfil);
         mBtn_concluido.setOnClickListener(processarArquivos);
+
+        btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
+        btn_Arrow_Back.setOnClickListener(arrowBack);
 
         //Validator
         validator = new Validator(this);
@@ -110,6 +114,13 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
                 id_image_click = v.getId();
                 CropImage.startPickImageActivity(CadastroDoacaoActivity.this);
             }
+        }
+    };
+
+    private View.OnClickListener arrowBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onBackPressed();
         }
     };
 
@@ -194,14 +205,19 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
 
     private void gravaImagemDoacao(String uidDoacao, Uri uri, final int indice) {
         Uri file = uri;
-        StorageReference perfilRef = mStorageRef.child("doacoes/" + uidDoacao + indice + ".jpg");
-        Toast.makeText(this, "Estmos salvando as imagens", Toast.LENGTH_LONG).show();
+        StorageReference perfilRef = mStorageRef.child("doacoes/" + uidDoacao + "/" + uidDoacao + indice + ".jpg");
+        Toast.makeText(this, "Estamos salvando as imagens", Toast.LENGTH_LONG).show();
 
         perfilRef.putFile(file)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(CadastroDoacaoActivity.this, "Upload da foto " + String.valueOf(indice + 1 ) + " finalizado" , Toast.LENGTH_SHORT).show();
+                        if(indice == 1){
+                            Intent intent = new Intent(getApplicationContext(), DoacaoEnviadaActivity.class);
+                            mCountDownTimer.cancel();
+                            startActivity(intent);
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -220,6 +236,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
                     public void onComplete(@NonNull Task<DocumentReference> task) {
                         uidDoacao = task.getResult().getId();
                         Toast.makeText(CadastroDoacaoActivity.this, "Doacao Cadastrada", Toast.LENGTH_SHORT).show();
+                        gravarImagens();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                      @Override
@@ -233,6 +250,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
 
     @Override
     public void onValidationSucceeded() {
+        mBtn_concluido.setEnabled(false);
         FirebaseUser user = mAuth.getCurrentUser();
         Doacao doacao = new Doacao();
         doacao.setCategoria(mCategoria.getText().toString());
@@ -242,7 +260,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
 
         gravaDoacaonabase(doacao);
 
-        mCountDownTimer = new CountDownTimer(3000, 1000) {
+        mCountDownTimer = new CountDownTimer(3000, 3000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -250,17 +268,20 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
 
             @Override
             public void onFinish() {
-                if(uri_foto1 != null){
-                    gravaImagemDoacao(uidDoacao, uri_foto1, 0);
-                }
-                if(uri_foto2 != null){
-                    gravaImagemDoacao(uidDoacao, uri_foto2, 1 );
-                }
+                Toast.makeText(CadastroDoacaoActivity.this, "Estamos tentando salvar sua doação. Aguarde um pouco", Toast.LENGTH_LONG).show();
             }
         }.start();
 
 
+    }
 
+    public void gravarImagens(){
+        if(uri_foto1 != null){
+            gravaImagemDoacao(uidDoacao, uri_foto1, 0);
+        }
+        if(uri_foto2 != null){
+            gravaImagemDoacao(uidDoacao, uri_foto2, 1 );
+        }
     }
 
     @Override

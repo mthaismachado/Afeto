@@ -89,8 +89,6 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
                             Log.d("TAG", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             getUserInfo(user);
-                            startActivity(new Intent(getBaseContext(), Dashboard_area_logada.class));
-                            finishAffinity();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", task.getException());
@@ -123,6 +121,8 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
                             usuario.setComoAjuda(null);
                         }
                         UsuarioSingleton.setUsuario(usuario);
+                        startActivity(new Intent(getBaseContext(), Dashboard_area_logada.class));
+                        finishAffinity();
                     } else {
                         Log.d("TAG", "No such document");
                     }

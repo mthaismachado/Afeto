@@ -64,7 +64,13 @@
             android:textSize="60sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<ScrollView
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/layout_medicos">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +82,8 @@
             android:textColor="@color/gray"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/medicos" />
+</ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

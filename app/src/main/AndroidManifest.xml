@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.CadastroDoacaoActivity" android:theme="@style/NoActionBar"></activity>
+        <activity android:name=".Activity.ListarDoacoesActivity"></activity>
+        <activity
+            android:name=".Activity.CadastroDoacaoActivity"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".Activity.FinanceiroActivity"
             android:theme="@style/NoActionBar" />

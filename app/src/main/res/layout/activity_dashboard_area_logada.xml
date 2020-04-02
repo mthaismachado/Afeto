@@ -35,7 +35,7 @@
             android:src="@drawable/coracao"
             />
         <ImageView
-            android:id="@+id/btn_perfil"
+            android:id="@+id/abre_fake_drawer"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_width="50dp"
@@ -46,6 +46,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_dash_logada"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -200,4 +201,100 @@
             android:text="Forum"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fake_drawer"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#f8f5f0"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="150dp"
+            android:layout_height="180dp"
+            android:src="@drawable/coracao"
+            app:civ_border_color="@color/background_app"
+            app:civ_border_width="2dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        
+        <TextView
+            android:id="@+id/lbl_nome_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do usuario"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_image"
+            android:fontFamily="@font/love_story_rough"
+            android:textColor="@color/gray"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:id="@+id/btn_ir_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f8f5f0"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textSize="20sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_nome_usuario"
+            android:text="Meu perfil"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_ir_perfil">
+        <Button
+            android:id="@+id/btn_quem_somos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:background="#f8f5f0"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:gravity="left|bottom|top"
+            android:textSize="15sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Quem somos"/>
+        <Button
+            android:id="@+id/btn_perguntas_frequentes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f8f5f0"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:textSize="15sp"
+            android:gravity="left|bottom|top"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_quem_somos"
+            android:text="Perguntas Frequentes"/>
+        <Button
+            android:id="@+id/btn_fale_com_a_gente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f8f5f0"
+            android:fontFamily="@font/hero"
+            android:textColor="@color/gray"
+            android:gravity="left|bottom|top"
+            android:textSize="15sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_perguntas_frequentes"
+            android:text="Fale com a gente"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
