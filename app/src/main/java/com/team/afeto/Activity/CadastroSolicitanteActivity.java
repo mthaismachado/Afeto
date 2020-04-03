@@ -39,7 +39,6 @@ public class CadastroSolicitanteActivity extends AppCompatActivity implements Va
     @Length(min = 14, message = "Acho que está faltando número")
     private EditText cpf;
 
-    private EditText genero;
     @Length(min = 5, message = "Qual o estado que você mora?")
     private EditText estado;
 
@@ -66,7 +65,6 @@ public class CadastroSolicitanteActivity extends AppCompatActivity implements Va
         //FindView
         nomeCompleto = findViewById(R.id.nomecompleto);
         cpf = findViewById(R.id.cpf);
-        genero = findViewById(R.id.genero);
         estado = findViewById(R.id.estado);
         cidade = findViewById(R.id.cidade);
 
@@ -115,7 +113,7 @@ public class CadastroSolicitanteActivity extends AppCompatActivity implements Va
         Usuario usuario = new Usuario();
         usuario.setNome(nomeCompleto.getText().toString());
         usuario.setCpf(cpf.getText().toString());
-        usuario.setGenero(genero.getText().toString());
+        usuario.setGenero("Feminino");
         usuario.setEstado(estado.getText().toString());
         usuario.setCidade(cidade.getText().toString());
 

@@ -202,7 +202,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lbl_comoAjuda" />
 
-
+        <ImageView
+            android:id="@+id/img_btn_premium"
+            app:layout_constraintTop_toBottomOf="@id/lbl_descricao"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:src="@drawable/banner_premium_perfil"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="50dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

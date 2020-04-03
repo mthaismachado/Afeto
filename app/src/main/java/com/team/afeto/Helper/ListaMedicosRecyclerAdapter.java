@@ -38,8 +38,10 @@ public class ListaMedicosRecyclerAdapter extends RecyclerView.Adapter<ListaMedic
     public void onBindViewHolder(@NonNull final ListaMedicosRecyclerAdapter.ViewHolder viewHolder, int position) {
         Medico medico = mLista.get(position);
         viewHolder.mTxtNome.setText(medico.getNome());
-        viewHolder.mTxtEspecialidade.setText(medico.getEspecialidade());
-        viewHolder.mTxtBairro.setText(medico.getBairro());
+        String especialidade = medico.getEspecialidade().substring(0,1).toUpperCase() + medico.getEspecialidade().substring(1);
+        viewHolder.mTxtEspecialidade.setText(especialidade);
+        String bairro = medico.getBairro().substring(0,1).toUpperCase() + medico.getBairro().substring(1);
+        viewHolder.mTxtBairro.setText(bairro);
         viewHolder.mTxtTelefone.setText(medico.getTelefone());
         viewHolder.mBtn_call.setOnClickListener(new View.OnClickListener() {
             @Override

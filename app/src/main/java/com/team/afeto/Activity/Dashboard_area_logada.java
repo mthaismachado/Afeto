@@ -81,9 +81,6 @@ public class Dashboard_area_logada extends AppCompatActivity {
         mBtn_Financeiro.setOnClickListener(acaoBtnFinanceiro);
         mBtn_quem_somos.setOnClickListener(ir_perguntas_frequentes);
 
-
-        mLbl_nome_usuario.setText(UsuarioSingleton.getUsuario().getNome());
-
         // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
 
@@ -165,6 +162,7 @@ public class Dashboard_area_logada extends AppCompatActivity {
             }
             if(UsuarioSingleton.getUsuario() != null && UsuarioSingleton.getUsuario().getUri_perfil() == null){
                 try {
+                    mLbl_nome_usuario.setText(UsuarioSingleton.getUsuario().getNome());
                     recuperaImagemPerfil();
                 } catch (IOException e) {
                     e.printStackTrace();

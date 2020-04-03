@@ -15,6 +15,7 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Length;
 import com.team.afeto.R;
 
+import java.text.Normalizer;
 import java.util.List;
 
 public class FormularioBuscaMedicosActivity extends AppCompatActivity implements Validator.ValidationListener {
@@ -60,10 +61,22 @@ public class FormularioBuscaMedicosActivity extends AppCompatActivity implements
     @Override
     public void onValidationSucceeded() {
         Intent intent = new Intent(getApplicationContext(), ListarMedicosActivity.class);
-        intent.putExtra("bairro", mBairro.getText().toString());
-        intent.putExtra("especialidade", mEspecialidades.getText().toString());
+
+        String especialidade = mEspecialidades.getText().toString().trim().toLowerCase();
+        especialidade = removerAcentos(especialidade);
+
+        String bairro = mBairro.getText().toString().trim().toLowerCase();
+        bairro = removerAcentos(bairro);
+
+        intent.putExtra("bairro", bairro);
+        intent.putExtra("especialidade", especialidade);
         startActivity(intent);
     }
+
+    public String removerAcentos(String str) {
+        return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+    }
+
 
     private View.OnClickListener arrowBack = new View.OnClickListener() {
         @Override

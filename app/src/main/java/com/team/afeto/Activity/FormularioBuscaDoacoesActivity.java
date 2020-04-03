@@ -2,6 +2,7 @@ package com.team.afeto.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -40,7 +41,9 @@ public class FormularioBuscaDoacoesActivity extends AppCompatActivity {
     private View.OnClickListener buscarDoacoes = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //TODO: Esperar a tela de doações =D
+            Intent intent = new Intent(getApplicationContext(), ListarDoacoesActivity.class);
+            intent.putExtra("categoria", mSpinner_categorias.getSelectedItem().toString());
+            startActivity(intent);
         }
     };
 

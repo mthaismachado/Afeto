@@ -29,6 +29,7 @@ import com.team.afeto.Helper.UsuarioSingleton;
 import com.team.afeto.Model.Medico;
 import com.team.afeto.R;
 
+import java.text.Normalizer;
 import java.util.List;
 
 public class CadastroMedicoActivity extends AppCompatActivity implements Validator.ValidationListener {
@@ -71,11 +72,20 @@ public class CadastroMedicoActivity extends AppCompatActivity implements Validat
         mBtn_concluido.setOnClickListener(validaeGrava);
     }
 
+    public String removerAcentos(String str) {
+        return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+    }
+
+
     @Override
     public void onValidationSucceeded() {
         Medico medico = new Medico();
-        medico.setEspecialidade(mEspecialidades.getText().toString().trim());
-        medico.setBairro(mBairro.getText().toString().trim());
+        String especialidade = mEspecialidades.getText().toString().trim().toLowerCase();
+        especialidade = removerAcentos(especialidade);
+        medico.setEspecialidade(especialidade);
+        String bairro = mBairro.getText().toString().trim().toLowerCase();
+        bairro = removerAcentos(bairro);
+        medico.setBairro(bairro);
         medico.setDatas(mDatas.getText().toString().trim());
 
         if(mValores.getText().toString().equals("") || mValores.getText().toString().equals("0")){

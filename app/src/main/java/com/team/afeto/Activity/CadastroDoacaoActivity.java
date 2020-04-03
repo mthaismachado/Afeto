@@ -18,9 +18,11 @@ import android.os.CountDownTimer;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,21 +39,16 @@ import com.google.firebase.storage.UploadTask;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Length;
-import com.team.afeto.Helper.UsuarioSingleton;
 import com.team.afeto.Model.Doacao;
-import com.team.afeto.Model.Usuario;
 import com.team.afeto.R;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CadastroDoacaoActivity extends AppCompatActivity implements Validator.ValidationListener {
-    @Length(min = 5, message = "Qual a categoria?")
-    private EditText mCategoria;
+    private Spinner mCategoria;
     @Length(min = 4, message = "Escreve um título legal")
     private EditText mtitulo;
     private EditText mValor;
@@ -69,6 +66,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
     private Uri uri_foto2;
     private CountDownTimer mCountDownTimer;
     private ImageView btn_Arrow_Back;
+    private static final String[] CATEGORIAS_DOACAO = new String[]{"Higiene", "Casa", "Acessórios", "Roupas", "Bebê"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +75,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
 
         photo1 = findViewById(R.id.photo1);
         photo2 = findViewById(R.id.photo2);
-        mCategoria = findViewById(R.id.categoria);
+
         mtitulo = findViewById(R.id.titulo);
         mValor = findViewById(R.id.valor);
         mBtn_concluido = findViewById(R.id.btn_concluido);
@@ -88,6 +86,11 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
 
         btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
         btn_Arrow_Back.setOnClickListener(arrowBack);
+
+        mCategoria = findViewById(R.id.categoria);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CATEGORIAS_DOACAO);
+        mCategoria.setAdapter(adapter);
+
 
         //Validator
         validator = new Validator(this);
@@ -253,7 +256,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
         mBtn_concluido.setEnabled(false);
         FirebaseUser user = mAuth.getCurrentUser();
         Doacao doacao = new Doacao();
-        doacao.setCategoria(mCategoria.getText().toString());
+        doacao.setCategoria(mCategoria.getSelectedItem().toString());
         doacao.setTitulo(mtitulo.getText().toString());
         doacao.setValor(mValor.getText().toString());
         doacao.setUidUsuario(user.getUid());
