@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,7 +38,11 @@ public class ListarMedicosActivity extends AppCompatActivity {
     private List<Medico> mlista;
     FirebaseFirestore db;
 
+    private TextView mNaoEncontramosMedicos;
+
     private ImageView btn_Arrow_Back;
+
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +51,11 @@ public class ListarMedicosActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+
         btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
         btn_Arrow_Back.setOnClickListener(arrowBack);
+        mNaoEncontramosMedicos = findViewById(R.id.naoEncontramosMedicos);
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -63,6 +72,7 @@ public class ListarMedicosActivity extends AppCompatActivity {
     };
 
     private void realizaConsultaMedicos(){
+        mProgressBar.setVisibility(View.VISIBLE);
         Intent intent = getIntent();
         String bairro = intent.getStringExtra("bairro");
         String especialidade = intent.getStringExtra("especialidade");
@@ -92,9 +102,12 @@ public class ListarMedicosActivity extends AppCompatActivity {
                 }
                 adapter = new ListaMedicosRecyclerAdapter(getApplicationContext(), mlista);
                 mRecyclerView.setAdapter(adapter);
+                mProgressBar.setVisibility(View.GONE);
+                if(mlista.isEmpty()){
+                    mNaoEncontramosMedicos.setVisibility(View.VISIBLE);
+                }
             }
         });
-
         adapter = new ListaMedicosRecyclerAdapter(getApplicationContext(), mlista);
         mRecyclerView.setAdapter(adapter);
     }

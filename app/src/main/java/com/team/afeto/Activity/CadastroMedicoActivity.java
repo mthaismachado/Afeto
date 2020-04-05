@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
@@ -48,6 +49,7 @@ public class CadastroMedicoActivity extends AppCompatActivity implements Validat
     private FirebaseAuth mAuth;
     //Validator
     private Validator validator;
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,7 @@ public class CadastroMedicoActivity extends AppCompatActivity implements Validat
         validator.setValidationListener(this);
 
         mBtn_concluido.setOnClickListener(validaeGrava);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
     public String removerAcentos(String str) {
@@ -79,6 +82,8 @@ public class CadastroMedicoActivity extends AppCompatActivity implements Validat
 
     @Override
     public void onValidationSucceeded() {
+        mBtn_concluido.setEnabled(false);
+        mProgressBar.setVisibility(View.VISIBLE);
         Medico medico = new Medico();
         String especialidade = mEspecialidades.getText().toString().trim().toLowerCase();
         especialidade = removerAcentos(especialidade);
@@ -113,6 +118,8 @@ public class CadastroMedicoActivity extends AppCompatActivity implements Validat
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(CadastroMedicoActivity.this, "Algo saiu errado :(", Toast.LENGTH_SHORT).show();
+                mBtn_concluido.setEnabled(true);
+                mProgressBar.setVisibility(View.GONE);
             }
         });
 }

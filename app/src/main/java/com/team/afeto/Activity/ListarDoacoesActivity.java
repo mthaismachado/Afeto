@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,11 +32,15 @@ public class ListarDoacoesActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter adapter;
 
+    private TextView mLblnaoEncontramosDoacoes;
+
     private List<Doacao> mlista;
     FirebaseFirestore db;
 
     private ImageView btn_Arrow_Back;
     private TextView mLblCategoria;
+
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +52,10 @@ public class ListarDoacoesActivity extends AppCompatActivity {
         btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
         btn_Arrow_Back.setOnClickListener(arrowBack);
 
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+
         mLblCategoria = findViewById(R.id.lblCategoria);
+        mLblnaoEncontramosDoacoes = findViewById(R.id.naoEncontramosDoacoes);
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -67,6 +75,7 @@ public class ListarDoacoesActivity extends AppCompatActivity {
     };
 
     private void realizaConsultaDoacoes(String categoria){
+        mProgressBar.setVisibility(View.VISIBLE);
 
         mlista = new ArrayList<>();
 
@@ -89,9 +98,14 @@ public class ListarDoacoesActivity extends AppCompatActivity {
                             }
                         } else {
                             Toast.makeText(ListarDoacoesActivity.this, "Tivemos problemas ao consultar", Toast.LENGTH_LONG).show();
+                            mProgressBar.setVisibility(View.GONE);
                         }
                         adapter = new ListarDoacoesRecyclerAdapter(getApplicationContext(), mlista);
                         mRecyclerView.setAdapter(adapter);
+                        mProgressBar.setVisibility(View.GONE);
+                        if (mlista.isEmpty()){
+                            mLblnaoEncontramosDoacoes.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
 

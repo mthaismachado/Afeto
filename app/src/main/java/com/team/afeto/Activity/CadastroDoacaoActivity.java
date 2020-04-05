@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ import com.google.firebase.storage.UploadTask;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Length;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.team.afeto.Model.Doacao;
 import com.team.afeto.R;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -67,6 +69,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
     private CountDownTimer mCountDownTimer;
     private ImageView btn_Arrow_Back;
     private static final String[] CATEGORIAS_DOACAO = new String[]{"Higiene", "Casa", "Acessórios", "Roupas", "Bebê"};
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
 
         photo1 = findViewById(R.id.photo1);
         photo2 = findViewById(R.id.photo2);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         mtitulo = findViewById(R.id.titulo);
         mValor = findViewById(R.id.valor);
@@ -215,10 +219,10 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(CadastroDoacaoActivity.this, "Upload da foto " + String.valueOf(indice + 1 ) + " finalizado" , Toast.LENGTH_SHORT).show();
                         if(indice == 1){
                             Intent intent = new Intent(getApplicationContext(), DoacaoEnviadaActivity.class);
                             mCountDownTimer.cancel();
+                            mProgressBar.setVisibility(View.GONE);
                             startActivity(intent);
                         }
                     }
@@ -227,6 +231,8 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
                     @Override
                     public void onFailure(@NonNull Exception exception) {
                         Toast.makeText(CadastroDoacaoActivity.this, "Nao conseguimos salvar as fotos", Toast.LENGTH_SHORT).show();
+                        mBtn_concluido.setEnabled(true);
+                        mProgressBar.setVisibility(View.GONE);
                     }
                 });
     }
@@ -245,6 +251,8 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
                      @Override
                     public void onFailure(@NonNull Exception e) {
                          Toast.makeText(CadastroDoacaoActivity.this, "Não conseguimos cadastrar a doação", Toast.LENGTH_SHORT).show();
+                         mBtn_concluido.setEnabled(true);
+                         mProgressBar.setVisibility(View.GONE);
                     }
                 });
 
@@ -254,12 +262,20 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
     @Override
     public void onValidationSucceeded() {
         mBtn_concluido.setEnabled(false);
+        mProgressBar.setVisibility(View.VISIBLE);
         FirebaseUser user = mAuth.getCurrentUser();
         Doacao doacao = new Doacao();
         doacao.setCategoria(mCategoria.getSelectedItem().toString());
         doacao.setTitulo(mtitulo.getText().toString());
         doacao.setValor(mValor.getText().toString());
         doacao.setUidUsuario(user.getUid());
+
+        if(uri_foto1 == null && uri_foto2 == null){
+            Toast.makeText(this, "Adicione uma imagem do seu produto", Toast.LENGTH_LONG).show();
+            mBtn_concluido.setEnabled(true);
+            mProgressBar.setVisibility(View.GONE);
+            return;
+        }
 
         gravaDoacaonabase(doacao);
 

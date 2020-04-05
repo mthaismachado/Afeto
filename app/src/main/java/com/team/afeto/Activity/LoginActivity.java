@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,6 +45,8 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
     private ImageView btn_Arrow_Back;
     private Validator validator;
     private CountDownTimer mCountDownTimer;
+    ProgressBar mProgressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,8 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
 
         btn_Arrow_Back = findViewById(R.id.btn_arrow_back);
         btn_Arrow_Back.setOnClickListener(arrowBack);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         //Validator
         validator = new Validator(this);
@@ -93,6 +98,8 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
                             getUserInfo(user);
                         } else {
                             // If sign in fails, display a message to the user.
+                            btn_login.setEnabled(true);
+                            mProgressBar.setVisibility(View.GONE);
                             Log.w("TAG", "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Confere os dados e tenta novamente. Pode ser a Internet também!",
                                     Toast.LENGTH_LONG).show();
@@ -131,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
 
                             @Override
                             public void onFinish() {
+                                mProgressBar.setVisibility(View.GONE);
                                 startActivity(new Intent(getBaseContext(), Dashboard_area_logada.class));
                                 finishAffinity();
                             }
@@ -138,9 +146,13 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
 
                     } else {
                         Log.d("TAG", "No such document");
+                        btn_login.setEnabled(true);
+                        mProgressBar.setVisibility(View.GONE);
                     }
                 } else {
                     Log.d("TAG", "get failed with ", task.getException());
+                    btn_login.setEnabled(true);
+                    mProgressBar.setVisibility(View.GONE);
                 }
             }
         });
@@ -149,6 +161,8 @@ public class LoginActivity extends AppCompatActivity implements Validator.Valida
 
     @Override
     public void onValidationSucceeded() {
+        mProgressBar.setVisibility(View.VISIBLE);
+        btn_login.setEnabled(false);
         fazerLogin(email.getText().toString(), senha.getText().toString());
     }
 
