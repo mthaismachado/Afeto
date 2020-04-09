@@ -93,6 +93,7 @@ public class ListarDoacoesActivity extends AppCompatActivity {
                                 Doacao doacao = new Doacao();
                                 doacao.setTitulo(document.getString("titulo"));
                                 doacao.setValor(document.getString("valor"));
+                                doacao.setBairro(document.getString("bairro"));
                                 mlista.add(doacao);
 
                             }

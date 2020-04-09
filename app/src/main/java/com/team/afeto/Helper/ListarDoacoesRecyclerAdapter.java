@@ -36,6 +36,8 @@ public class ListarDoacoesRecyclerAdapter extends RecyclerView.Adapter<ListarDoa
         Doacao doacao = mLista.get(position);
         viewHolder.mTxtTitulo.setText(doacao.getTitulo());
         viewHolder.mTxtValor.setText(doacao.getValor());
+        String strdoacao = doacao.getBairro().substring(0,1).toUpperCase() + doacao.getBairro().substring(1);
+        viewHolder.mTxtBairro.setText(strdoacao);
     }
 
     @Override
@@ -47,6 +49,7 @@ public class ListarDoacoesRecyclerAdapter extends RecyclerView.Adapter<ListarDoa
 
         public TextView mTxtTitulo;
         public TextView mTxtValor;
+        public TextView mTxtBairro;
 
 
 
@@ -55,8 +58,7 @@ public class ListarDoacoesRecyclerAdapter extends RecyclerView.Adapter<ListarDoa
 
             mTxtTitulo = (TextView) itemView.findViewById(R.id.lblTitulo);
             mTxtValor = (TextView) itemView.findViewById(R.id.lblValor);
-
-
+            mTxtBairro = (TextView) itemView.findViewById(R.id.lblBairro);
         }
     }
 

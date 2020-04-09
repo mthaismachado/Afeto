@@ -7,16 +7,26 @@ public class Doacao {
     private String categoria;
     private String titulo;
     private String valor;
+    private String bairro;
     private String uidUsuario;
 
     public Doacao() {
     }
 
-    public Doacao(String categoria, String titulo, String valor, String uidUsuario) {
+    public Doacao(String categoria, String titulo, String valor, String bairro, String uidUsuario) {
         this.categoria = categoria;
         this.titulo = titulo;
         this.valor = valor;
+        this.bairro = bairro;
         this.uidUsuario = uidUsuario;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
     public String getCategoria() {
