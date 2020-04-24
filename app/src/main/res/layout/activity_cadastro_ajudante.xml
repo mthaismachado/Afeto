@@ -27,30 +27,35 @@
 
             <ImageView
                 android:id="@+id/btn_arrow_back"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/arrow_back_img"
+                android:paddingStart="10dp"
                 android:paddingLeft="10dp"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="13dp"
                 android:src="@drawable/coracao"
-                />
-            <ImageView
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/coracao_content_description" />
+
+            <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:src="@drawable/ic_settings_black_24dp"
-                />
+                android:contentDescription="@string/engrenagem_content_description"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="300dp"
@@ -66,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/love_story_rough"
                     android:paddingTop="80dp"
-                    android:text="Legal!"
+                    android:text="@string/legal"
                     android:textColor="@color/gray"
                     android:textSize="60sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -78,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="20dp"
-                    android:text="Conta pra gente um pouquinho mais sobre você preenchendo o cadastro abaixo"
+                    android:text="@string/conta_pra_gente_um_pouquinho_mais_sobre_voc_preenchendo_o_cadastro_abaixo"
                     android:textColor="@color/gray"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -90,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Nome Completo"
+                    android:text="@string/nome_completo"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -102,10 +107,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@color/background_edit_text"
-                    android:capitalize="words"
                     android:padding="10dp"
+                    android:hint="@string/nome_completo"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lblNome" />
+                    app:layout_constraintTop_toBottomOf="@id/lblNome"
+                    android:inputType="textCapWords"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/lblcpf"
@@ -113,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="CPF"
+                    android:text="@string/cpf"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -126,9 +133,11 @@
                     android:layout_height="40dp"
                     android:padding="10dp"
                     android:inputType="number"
+                    android:hint="@string/cpf"
                     android:background="@color/background_edit_text"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lblcpf" />
+                    app:layout_constraintTop_toBottomOf="@id/lblcpf"
+                    android:importantForAutofill="no" />
 
 
                 <TextView
@@ -137,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Gênero"
+                    android:text="@string/genero"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -149,8 +158,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:padding="10dp"
+                    android:inputType="text"
+                    android:hint="@string/genero"
                     android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblgenero" />
+                    app:layout_constraintTop_toBottomOf="@id/lblgenero"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/lblestado"
@@ -158,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Estado"
+                    android:text="@string/estado"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -170,8 +182,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:padding="10dp"
+                    android:inputType="text"
+                    android:hint="@string/estado"
                     android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblestado" />
+                    app:layout_constraintTop_toBottomOf="@id/lblestado"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/lblcidade"
@@ -179,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Cidade"
+                    android:text="@string/cidade"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -191,8 +206,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:padding="10dp"
+                    android:inputType="text"
+                    android:hint="@string/cidade"
                     android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblcidade" />
+                    app:layout_constraintTop_toBottomOf="@id/lblcidade"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/lbl_ajudar"
@@ -200,7 +218,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Como você quer ajudar?"
+                    android:text="@string/como_voc_quer_ajudar"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -213,7 +231,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="5dp"
-                    android:text="Para secionar mais de uma opçao"
+                    android:text="@string/para_secionar_mais_de_uma_op_ao"
                     android:textColor="@color/gray"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -227,7 +245,7 @@
                     android:checked="false"
                     style="@android:style/Widget.CompoundButton.RadioButton"
                     android:fontFamily="@font/hero_light"
-                    android:text="Voluntariado"
+                    android:text="@string/voluntariado"
                     android:textColor="@color/gray"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -238,7 +256,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero_light"
-                    android:text="Saúde"
+                    android:text="@string/sa_de"
                     style="@android:style/Widget.CompoundButton.RadioButton"
                     android:textColor="@color/gray"
                     android:textStyle="bold"
@@ -250,7 +268,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero_light"
-                    android:text="Doações"
+                    android:text="@string/doa_es"
                     style="@android:style/Widget.CompoundButton.RadioButton"
                     android:textColor="@color/gray"
                     android:textStyle="bold"
@@ -262,7 +280,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero_light"
-                    android:text="Outro"
+                    android:text="@string/outro"
                     style="@android:style/Widget.CompoundButton.RadioButton"
                     android:textColor="@color/gray"
                     android:textStyle="bold"
@@ -276,7 +294,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@color/gray"
-                    android:text="Enviar"
+                    android:text="@string/enviar"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"

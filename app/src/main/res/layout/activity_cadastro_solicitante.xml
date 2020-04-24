@@ -27,30 +27,35 @@
 
             <ImageView
                 android:id="@+id/btn_arrow_back"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/arrow_back_img"
+                android:paddingStart="10dp"
                 android:paddingLeft="10dp"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="13dp"
                 android:src="@drawable/coracao"
-                />
-            <ImageView
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/coracao_content_description" />
+
+            <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:src="@drawable/ic_settings_black_24dp"
-                />
+                android:contentDescription="@string/engrenagem_content_description"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="300dp"
@@ -66,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/love_story_rough"
                     android:paddingTop="80dp"
-                    android:text="Quase lá..."
+                    android:text="@string/quase_l"
                     android:textColor="@color/gray"
                     android:textSize="60sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -78,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="20dp"
-                    android:text="Agora vamos criar seu login para acessar o Afeto sempre que quiser"
+                    android:text="@string/cadastro_solicitante_text"
                     android:textColor="@color/gray"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -90,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Nome Completo"
+                    android:text="@string/nome_completo"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -103,10 +108,12 @@
                     android:layout_height="40dp"
                     android:background="@color/background_edit_text"
                     android:inputType="textCapSentences"
+                    android:hint="@string/nome_completo"
                     android:maxLines="1"
                     android:padding="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lblNome" />
+                    app:layout_constraintTop_toBottomOf="@id/lblNome"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/lblcpf"
@@ -114,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="CPF"
+                    android:text="@string/cpf"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -126,11 +133,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:padding="10dp"
+                    android:hint="@string/cpf"
                     android:inputType="number"
                     android:maxLines="1"
                     android:background="@color/background_edit_text"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lblcpf" />
+                    app:layout_constraintTop_toBottomOf="@id/lblcpf"
+                    android:importantForAutofill="no" />
 
 
                 <TextView
@@ -139,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Estado"
+                    android:text="@string/estado"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -150,11 +159,14 @@
                     android:id="@+id/estado"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:padding="10dp"
+                    android:background="@color/background_edit_text"
                     android:inputType="textCapSentences"
                     android:maxLines="1"
-                    android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblestado" />
+                    android:hint="@string/estado"
+                    android:padding="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/lblestado"
+                    tools:layout_editor_absoluteX="0dp"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/lblcidade"
@@ -162,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Cidade"
+                    android:text="@string/cidade"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -173,11 +185,14 @@
                     android:id="@+id/cidade"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:padding="10dp"
+                    android:background="@color/background_edit_text"
                     android:inputType="textCapSentences"
                     android:maxLines="1"
-                    android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblcidade" />
+                    android:padding="10dp"
+                    android:hint="@string/cidade"
+                    app:layout_constraintTop_toBottomOf="@id/lblcidade"
+                    tools:layout_editor_absoluteX="0dp"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/lblemail"
@@ -185,7 +200,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Email"
+                    android:text="@string/e_mail"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -197,10 +212,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:padding="10dp"
-                    android:inputType="textCapSentences"
+                    android:inputType="textEmailAddress"
                     android:maxLines="1"
+                    android:hint="@string/e_mail"
                     android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblemail" />
+                    app:layout_constraintTop_toBottomOf="@id/lblemail"
+                    android:importantForAutofill="no" />
 
                 <TextView
                     android:id="@+id/lblsenha"
@@ -208,7 +225,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hero"
                     android:paddingTop="25dp"
-                    android:text="Senha"
+                    android:text="@string/senha"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/font_size_cadastro_label"
                     android:textStyle="bold"
@@ -222,8 +239,10 @@
                     android:padding="10dp"
                     android:inputType="textPassword"
                     android:maxLines="1"
+                    android:hint="@string/senha"
                     android:background="@color/background_edit_text"
-                    app:layout_constraintTop_toBottomOf="@id/lblsenha" />
+                    app:layout_constraintTop_toBottomOf="@id/lblsenha"
+                    android:importantForAutofill="no" />
 
                 <Button
                     android:id="@+id/btn_enviar"
@@ -232,7 +251,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@color/gray"
-                    android:text="Enviar"
+                    android:text="@string/enviar"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"

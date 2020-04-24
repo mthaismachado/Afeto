@@ -26,6 +26,8 @@
             android:id="@+id/btn_arrow_back"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/arrow_back_img"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:src="@drawable/ic_arrow_back_black_24dp"
@@ -39,7 +41,8 @@
             android:src="@drawable/coracao"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/coracao_content_description" />
 
         <ImageView
             android:layout_width="50dp"
@@ -47,6 +50,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:src="@drawable/ic_settings_black_24dp"
+            android:contentDescription="@string/engrenagem_content_description"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,7 +68,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/love_story_rough"
             android:paddingTop="80dp"
-            android:text="Financeiro"
+            android:text="@string/label_financeiro_screen"
             android:textColor="@color/gray"
             android:textSize="60sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -85,12 +89,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:visibility="gone"
+            android:fontFamily="@font/hero"
+            android:padding="10dp"
+            android:textSize="17sp"
             android:background="@color/background_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="Em uma gravidez, os principais gastos podem ser divididos em categorias, como roupas, medicamentos, casa, médicos e emergências.\n\nRoupas: tanto suas, quanto para o bebê. Avalie as roupas que não vão mais caber em você quando a barriga começar a crescer, porque pode ser necessário comprar novas. Pense em comprar roupas para o período de gravidez que possam ser usadas depois, mas também aproveite roupas de outras mães que possam emprestar.
-Já as roupas do bebê, saiba que eles crescem rápido e não duram muito. Por isso, além de dar uma olhada nas doações do Afeto, peça e aceite roupinhas usadas de amigos e parentes.\n
-Consultas médicas: Você precisará de, no mínimo, uma consulta mensal ao ginecologista. Nesses encontros serão avaliadas as principais funções vitais que interferem no desenvolvimento do feto, tais como pressão arterial, perfil sanguíneo, peso corporal e deficiência de vitaminas. Além do SUS oferecer essa consulta, existem médicos com preços populares, que podem ser acessados aqui no Afeto. \n
-Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e começarem a ser pensados no final. Itens como berço, acessórios e brinquedos e outros, como tela nas janelas."
+            android:text="@string/principais_gastos_text"
             app:layout_constraintTop_toBottomOf="@id/btn_pgastos" />
 
         <TextView
@@ -99,7 +103,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="10dp"
-            android:text="+"
+            android:text="@string/plus_button_text"
             android:textSize="@dimen/size_plus_financeiro"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/btn_pgastos"
@@ -117,7 +121,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:fontFamily="@font/hero"
             android:textColor="@color/gray"
             android:textStyle="bold"
-            android:text="Principais gastos"
+            android:text="@string/principais_gastos_lbl"
             android:layout_marginStart="30dp" />
 
         <TextView
@@ -137,7 +141,10 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:visibility="gone"
             android:background="@color/background_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="Você precisa estabelecer seus gastos voltados para o que é essencial nesse período, e, se possível, ter uma reserva de emergência. "
+            android:fontFamily="@font/hero"
+            android:padding="10dp"
+            android:textSize="17sp"
+            android:text="@string/novas_prioridades_txt"
             app:layout_constraintTop_toBottomOf="@id/btn_novaprioridades" />
 
         <TextView
@@ -146,7 +153,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="10dp"
-            android:text="+"
+            android:text="@string/plus_button_text"
             android:textSize="@dimen/size_plus_financeiro"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/btn_novaprioridades"
@@ -164,7 +171,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:fontFamily="@font/hero"
             android:textColor="@color/gray"
             android:textStyle="bold"
-            android:text="Novas prioridades"
+            android:text="@string/novas_prioridades"
             android:layout_marginStart="30dp" />
 
         <TextView
@@ -184,7 +191,10 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:visibility="gone"
             android:background="@color/background_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="O mais indicado nesse momento é procurar por alternativas antes de comprar. Doações, bazares e conversar com outras mães recentes pode ajudar o consumo diminuir muito."
+            android:fontFamily="@font/hero"
+            android:padding="10dp"
+            android:textSize="17sp"
+            android:text="@string/consumo_txt"
             app:layout_constraintTop_toBottomOf="@id/btn_consumoC" />
 
         <TextView
@@ -193,7 +203,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="10dp"
-            android:text="+"
+            android:text="@string/plus_button_text"
             android:textSize="@dimen/size_plus_financeiro"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/btn_consumoC"
@@ -211,7 +221,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:fontFamily="@font/hero"
             android:textColor="@color/gray"
             android:textStyle="bold"
-            android:text="Consumo Consciente"
+            android:text="@string/consumo_lbl"
             android:layout_marginStart="30dp" />
 
         <TextView
@@ -230,8 +240,11 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:layout_marginTop="10dp"
             android:visibility="gone"
             android:background="@color/background_edit_text"
+            android:fontFamily="@font/hero"
+            android:padding="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="Para esse período, você precisa de consultas com obstetra e, caso queira/precise, com outros profissionais, como psicólogos e nutricionistas. \nO SUS realiza consultas obstétricas, no mínimo, 06 (seis) consultas de acompanhamento pré-natal, sendo, preferencialmente, uma no primeiro trimestre, duas no segundo e três no terceiro trimestre da gestação; realização de 01 (uma) consulta no puerpério, até 42 dias após o nascimento.\nOs medicamentos e itens de farmácia serão indicados pelo seu obstetra, jamais se automedique durante a gravidez sem um aval profissional."
+            android:textSize="17sp"
+            android:text="@string/medicos_remedios_txt"
             app:layout_constraintTop_toBottomOf="@id/btn_medicoseremedios" />
 
         <TextView
@@ -240,7 +253,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="10dp"
-            android:text="+"
+            android:text="@string/plus_button_text"
             android:textSize="@dimen/size_plus_financeiro"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/btn_medicoseremedios"
@@ -258,7 +271,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:fontFamily="@font/hero"
             android:textColor="@color/gray"
             android:textStyle="bold"
-            android:text="Médicos e remédios"
+            android:text="@string/medicos_remedios_lbl"
             android:layout_marginStart="30dp" />
 
         <TextView
@@ -276,9 +289,12 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:visibility="gone"
+            android:padding="10dp"
             android:background="@color/background_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="Você pode ter acesso à alguns benefícios como grávida.\nNo SUS, você procurar a rede pública mais próxima da sua casa e pedir o atendimento. Pode ser no posto de saúde mais próximo de casa, que a gestante pegará todas as informações necessárias para ter um obstetra de confiança para acompanhar sua gravidez pelo SUS, de forma gratuita.\nCaso você esteja desempregada até 5 anos, pode se informar com o governo sobre o salário maternidade. É um benefício antigo, instituído pela Receita federal, a qual tem direito de receber as trabalhadoras empregadas, empregadas domésticas, mulheres que contribuem pela guia do INSS. \nAlém disso, existem médicos com preços acessíveis, que podem ser consultados aqui no Afeto."
+            android:fontFamily="@font/hero"
+            android:textSize="17sp"
+            android:text="@string/nao_tiver_renda_txt"
             app:layout_constraintTop_toBottomOf="@id/btn_naotiverrenda" />
 
         <TextView
@@ -287,7 +303,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="10dp"
-            android:text="+"
+            android:text="@string/plus_button_text"
             android:textSize="@dimen/size_plus_financeiro"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/btn_naotiverrenda"
@@ -305,7 +321,7 @@ Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e 
             android:fontFamily="@font/hero"
             android:textColor="@color/gray"
             android:textStyle="bold"
-            android:text="E se eu não tiver renda?"
+            android:text="@string/nao_tiver_renda_lbl"
             android:layout_marginStart="30dp" />
 
 

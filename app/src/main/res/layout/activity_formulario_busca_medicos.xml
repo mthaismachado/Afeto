@@ -27,31 +27,35 @@
 
             <ImageView
                 android:id="@+id/btn_arrow_back"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/arrow_back_img"
+                android:paddingStart="10dp"
                 android:paddingLeft="10dp"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="13dp"
                 android:src="@drawable/coracao"
-                />
-            <ImageView
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/coracao_content_description" />
+
+            <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:src="@drawable/ic_settings_black_24dp"
-                />
-
+                android:contentDescription="@string/engrenagem_content_description"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="300dp"
                 android:layout_height="match_parent"

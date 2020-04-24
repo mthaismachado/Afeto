@@ -18,31 +18,36 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/btn_arrow_back"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/arrow_back_img"
+            android:paddingStart="10dp"
             android:paddingLeft="10dp"
-            android:src="@drawable/ic_arrow_back_black_24dp" />
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="13dp"
             android:src="@drawable/coracao"
-            />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/coracao_content_description" />
+
         <ImageView
             android:id="@+id/abre_fake_drawer"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            android:contentDescription="@string/engrenagem_content_description"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:src="@drawable/ic_menu_black_24dp"
-            />
+            android:layout_marginEnd="10dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,7 +66,7 @@
             android:paddingTop="100dp"
             android:fontFamily="@font/love_story_rough"
             android:textColor="@color/gray"
-            android:text="Menu"
+            android:text="@string/menu"
             android:textSize="60sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -84,7 +89,8 @@
             app:layout_constraintLeft_toLeftOf="@id/btn_medicos"
             app:layout_constraintRight_toRightOf="@id/btn_medicos"
             app:layout_constraintTop_toTopOf="@id/btn_medicos"
-            app:layout_constraintBottom_toBottomOf="@id/btn_medicos"/>
+            app:layout_constraintBottom_toBottomOf="@id/btn_medicos"
+            android:contentDescription="@string/icone_medico" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,7 +103,7 @@
             android:fontFamily="@font/hero"
             android:textColor="@color/gray"
             android:textStyle="bold"
-            android:text="Médicos"/>
+            android:text="@string/m_dicos"/>
 
         <TextView
             android:id="@+id/btn_doacoes"
@@ -113,6 +119,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginBottom="20dp"
+            android:contentDescription="@string/carrinho_de_bebe"
             android:background="@drawable/carrinho_bebe_icon_24dp"
             app:layout_constraintLeft_toLeftOf="@id/btn_doacoes"
             app:layout_constraintRight_toRightOf="@id/btn_doacoes"
@@ -130,7 +137,7 @@
             app:layout_constraintLeft_toLeftOf="@id/btn_doacoes"
             app:layout_constraintRight_toRightOf="@id/btn_doacoes"
             app:layout_constraintBottom_toBottomOf="@id/btn_doacoes"
-            android:text="Doações"/>
+            android:text="@string/doa_es"/>
 
         <TextView
             android:id="@+id/btn_financeiro"
@@ -147,6 +154,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginBottom="20dp"
+            android:contentDescription="@string/simbolo_dinheiro"
             android:background="@drawable/financeiro_icon_24dp"
             app:layout_constraintLeft_toLeftOf="@id/btn_financeiro"
             app:layout_constraintRight_toRightOf="@id/btn_financeiro"
@@ -164,7 +172,7 @@
             app:layout_constraintLeft_toLeftOf="@id/btn_financeiro"
             app:layout_constraintRight_toRightOf="@id/btn_financeiro"
             app:layout_constraintBottom_toBottomOf="@id/btn_financeiro"
-            android:text="Financeiro"/>
+            android:text="@string/financeiro"/>
 
         <TextView
             android:id="@+id/btn_forum"
@@ -181,6 +189,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginBottom="20dp"
+            android:contentDescription="@string/balao_de_texto"
             android:background="@drawable/forum_icon_24dp"
             app:layout_constraintLeft_toLeftOf="@id/btn_forum"
             app:layout_constraintRight_toRightOf="@id/btn_forum"
@@ -198,7 +207,7 @@
             app:layout_constraintLeft_toLeftOf="@id/btn_forum"
             app:layout_constraintRight_toRightOf="@id/btn_forum"
             app:layout_constraintBottom_toBottomOf="@id/btn_forum"
-            android:text="Forum"/>
+            android:text="@string/forum"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -228,7 +237,7 @@
             android:id="@+id/lbl_nome_usuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome do usuario"
+            android:text="@string/nome_do_usuario"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_image"
@@ -247,7 +256,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lbl_nome_usuario"
-            android:text="Meu perfil"/>
+            android:text="@string/meu_perfil"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="200dp"
@@ -267,7 +276,7 @@
             android:textSize="15sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:text="Quem somos"/>
+            android:text="@string/quem_somos"/>
         <Button
             android:id="@+id/btn_perguntas_frequentes"
             android:layout_width="match_parent"
@@ -279,7 +288,7 @@
             android:gravity="left|bottom|top"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_quem_somos"
-            android:text="Perguntas Frequentes"/>
+            android:text="@string/perguntas_frequentes"/>
         <Button
             android:id="@+id/btn_fale_com_a_gente"
             android:layout_width="match_parent"
@@ -291,7 +300,7 @@
             android:textSize="15sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_perguntas_frequentes"
-            android:text="Fale com a gente"/>
+            android:text="@string/fale_com_a_gente"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

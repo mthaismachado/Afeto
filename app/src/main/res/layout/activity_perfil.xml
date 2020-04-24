@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/background_app"
     tools:context=".Activity.PerfilActivity">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerButtons"
@@ -22,31 +22,35 @@
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/btn_arrow_back"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/arrow_back_img"
+            android:paddingStart="10dp"
             android:paddingLeft="10dp"
-            android:src="@drawable/ic_arrow_back_black_24dp" />
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="13dp"
             android:src="@drawable/coracao"
-            />
-        <ImageView
-            android:id="@+id/btn_perfil"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/coracao_content_description" />
+
+        <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/ic_menu_black_24dp"
-            />
+            android:src="@drawable/ic_settings_black_24dp"
+            android:contentDescription="@string/engrenagem_content_description"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,10 +82,11 @@
         android:fontFamily="@font/love_story_rough"
         android:textColor="@color/gray"
         android:textSize="30sp"
-        android:text="Nome Completo da Pessoa"
+        android:text="@string/nome_completo_da_pessoa"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profile_image"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="30dp" />
 
     <TextView
         android:id="@+id/btn_editar_perfil"
@@ -92,10 +97,11 @@
         android:fontFamily="@font/hero"
         android:textColor="@color/gray"
         android:textSize="15sp"
-        android:text="Ver e editar perfil"
+        android:text="@string/ver_e_editar_perfil"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profile_image"
-        app:layout_constraintTop_toBottomOf="@id/lbl_nome_completo" />
+        app:layout_constraintTop_toBottomOf="@id/lbl_nome_completo"
+        android:layout_marginStart="30dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -110,7 +116,7 @@
             android:id="@+id/lbl_nome"
             android:layout_width="300dp"
             android:layout_height="35dp"
-            android:text="Nome Completo"
+            android:text="@string/nome_completo"
             android:background="@color/background_edit_text"
             android:fontFamily="@font/hero_light"
             android:textStyle="bold"
@@ -119,7 +125,8 @@
             android:paddingTop="10dp"
             android:paddingLeft="30dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="30dp" />
 
         <TextView
             android:id="@+id/lbl_email"
@@ -128,14 +135,15 @@
             android:layout_marginTop="20dp"
             android:paddingTop="10dp"
             android:paddingLeft="30dp"
-            android:text="Email do Usuario"
+            android:text="@string/e_mail"
             android:fontFamily="@font/hero_light"
             android:textStyle="bold"
             android:textColor="@color/gray"
             android:textSize="15sp"
             android:background="@color/background_edit_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_nome" />
+            app:layout_constraintTop_toBottomOf="@+id/lbl_nome"
+            android:paddingStart="30dp" />
 
         <TextView
             android:id="@+id/lbl_telefone"
@@ -144,14 +152,15 @@
             android:layout_marginTop="20dp"
             android:paddingTop="10dp"
             android:paddingLeft="30dp"
-            android:text="Telefone"
+            android:text="@string/telefone"
             android:fontFamily="@font/hero_light"
             android:textStyle="bold"
             android:textColor="@color/gray"
             android:textSize="15sp"
             android:background="@color/background_edit_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_email" />
+            app:layout_constraintTop_toBottomOf="@+id/lbl_email"
+            android:paddingStart="30dp" />
 
         <TextView
             android:id="@+id/lbl_estado"
@@ -160,14 +169,15 @@
             android:layout_marginTop="20dp"
             android:paddingTop="10dp"
             android:paddingLeft="30dp"
-            android:text="Estado"
+            android:text="@string/estado"
             android:fontFamily="@font/hero_light"
             android:textStyle="bold"
             android:textColor="@color/gray"
             android:textSize="15sp"
             android:background="@color/background_edit_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_telefone" />
+            app:layout_constraintTop_toBottomOf="@+id/lbl_telefone"
+            android:paddingStart="30dp" />
 
         <TextView
             android:id="@+id/lbl_comoAjuda"
@@ -176,14 +186,15 @@
             android:layout_marginTop="20dp"
             android:paddingTop="10dp"
             android:paddingLeft="30dp"
-            android:text="Como Ajuda?"
+            android:text="@string/como_ajuda"
             android:fontFamily="@font/hero_light"
             android:textStyle="bold"
             android:textColor="@color/gray"
             android:textSize="15sp"
             android:background="@color/background_edit_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_estado" />
+            app:layout_constraintTop_toBottomOf="@+id/lbl_estado"
+            android:paddingStart="30dp" />
 
         <TextView
             android:id="@+id/lbl_descricao"
@@ -193,14 +204,16 @@
             android:paddingTop="10dp"
             android:paddingLeft="30dp"
             android:paddingRight="10dp"
-            android:text="Aqui vai o seu perfil \nConta um pouquinho sobre você para que as meninas possam saber o que você faz, como você quer ajudar, o que você gosta de fazer... E mais o que você quiser :)"
+            android:text="@string/txt_perfil_descricao"
             android:fontFamily="@font/hero_light"
             android:textStyle="bold"
             android:textColor="@color/gray"
             android:textSize="15sp"
             android:background="@color/background_edit_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_comoAjuda" />
+            app:layout_constraintTop_toBottomOf="@+id/lbl_comoAjuda"
+            android:paddingStart="30dp"
+            android:paddingEnd="10dp" />
 
         <ImageView
             android:id="@+id/img_btn_premium"
@@ -210,7 +223,8 @@
             android:src="@drawable/banner_premium_perfil"
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:contentDescription="@string/quero_ser_premium" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
