@@ -70,6 +70,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
     private ImageView btn_Arrow_Back;
     private static final String[] CATEGORIAS_DOACAO = new String[]{"Higiene", "Casa", "Acessórios", "Roupas", "Bebê"};
     ProgressBar mProgressBar;
+    private Doacao doacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,8 +213,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
 
     private void gravaImagemDoacao(String uidDoacao, Uri uri, final int indice) {
         Uri file = uri;
-        StorageReference perfilRef = mStorageRef.child("doacoes/" + uidDoacao + "/" + uidDoacao + indice + ".jpg");
-        Toast.makeText(this, "Estamos salvando as imagens", Toast.LENGTH_SHORT).show();
+        final StorageReference perfilRef = mStorageRef.child("doacoes/" + uidDoacao + "/" + uidDoacao + indice + ".jpg");
 
         perfilRef.putFile(file)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -224,6 +224,14 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
                             mCountDownTimer.cancel();
                             mProgressBar.setVisibility(View.GONE);
                             startActivity(intent);
+                        }else{
+                            perfilRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    doacao.setUrlDownloadImage(uri.toString());
+                                    gravaDoacaonabase(doacao);
+                                }
+                            });
                         }
                     }
                 })
@@ -243,9 +251,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
-                        uidDoacao = task.getResult().getId();
                         Toast.makeText(CadastroDoacaoActivity.this, "Doacao Cadastrada", Toast.LENGTH_SHORT).show();
-                        gravarImagens();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                      @Override
@@ -264,7 +270,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
         mBtn_concluido.setEnabled(false);
         mProgressBar.setVisibility(View.VISIBLE);
         FirebaseUser user = mAuth.getCurrentUser();
-        Doacao doacao = new Doacao();
+        doacao = new Doacao();
         doacao.setCategoria(mCategoria.getSelectedItem().toString());
         doacao.setTitulo(mtitulo.getText().toString());
         doacao.setValor(mValor.getText().toString());
@@ -276,8 +282,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
             mProgressBar.setVisibility(View.GONE);
             return;
         }
-
-        gravaDoacaonabase(doacao);
+        gravarImagens();
 
         mCountDownTimer = new CountDownTimer(3000, 3000) {
             @Override
@@ -295,6 +300,8 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
     }
 
     public void gravarImagens(){
+        uidDoacao = db.collection("doacoes").document().getId();
+        Toast.makeText(this, "Estamos salvando as imagens", Toast.LENGTH_LONG).show();
         if(uri_foto1 != null){
             gravaImagemDoacao(uidDoacao, uri_foto1, 0);
         }

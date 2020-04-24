@@ -9,26 +9,36 @@ public class Doacao {
     private String valor;
     private String bairro;
     private String uidUsuario;
-    private Uri uri_perfil;
+    private Uri uri_fotoDoacao;
+    private String urlDownloadImage;
 
     public Doacao() {
     }
 
-    public Doacao(String categoria, String titulo, String valor, String bairro, String uidUsuario, Uri uri_perfil) {
+    public Doacao(String categoria, String titulo, String valor, String bairro, String uidUsuario, Uri uri_fotoDoacao, String urlDownloadImage) {
         this.categoria = categoria;
         this.titulo = titulo;
         this.valor = valor;
         this.bairro = bairro;
         this.uidUsuario = uidUsuario;
-        this.uri_perfil = uri_perfil;
+        this.uri_fotoDoacao = uri_fotoDoacao;
+        this.urlDownloadImage = urlDownloadImage;
     }
 
-    public Uri getUri_perfil() {
-        return uri_perfil;
+    public String getUrlDownloadImage() {
+        return urlDownloadImage;
     }
 
-    public void setUri_perfil(Uri uri_perfil) {
-        this.uri_perfil = uri_perfil;
+    public void setUrlDownloadImage(String urlDownloadImage) {
+        this.urlDownloadImage = urlDownloadImage;
+    }
+
+    public Uri getUri_fotoDoacao() {
+        return uri_fotoDoacao;
+    }
+
+    public void setUri_fotoDoacao(Uri uri_fotoDoacao) {
+        this.uri_fotoDoacao = uri_fotoDoacao;
     }
 
     public String getBairro() {

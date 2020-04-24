@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.team.afeto.Activity.ListarDoacoesActivity;
 import com.team.afeto.Model.Doacao;
 import com.team.afeto.R;
 
@@ -43,8 +42,8 @@ public class ListarDoacoesRecyclerAdapter extends RecyclerView.Adapter<ListarDoa
             String strdoacao = doacao.getBairro().substring(0,1).toUpperCase() + doacao.getBairro().substring(1);
             viewHolder.mTxtBairro.setText(strdoacao);
         }
-        if(doacao.getUri_perfil() != null){
-            Glide.with(context).load(doacao.getUri_perfil()).into(viewHolder.mDoacaoFoto);
+        if(doacao.getUrlDownloadImage() != null){
+            Glide.with(context).load(doacao.getUrlDownloadImage()).into(viewHolder.mDoacaoFoto);
         }
 
     }
