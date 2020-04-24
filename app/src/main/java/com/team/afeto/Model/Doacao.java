@@ -9,16 +9,26 @@ public class Doacao {
     private String valor;
     private String bairro;
     private String uidUsuario;
+    private Uri uri_perfil;
 
     public Doacao() {
     }
 
-    public Doacao(String categoria, String titulo, String valor, String bairro, String uidUsuario) {
+    public Doacao(String categoria, String titulo, String valor, String bairro, String uidUsuario, Uri uri_perfil) {
         this.categoria = categoria;
         this.titulo = titulo;
         this.valor = valor;
         this.bairro = bairro;
         this.uidUsuario = uidUsuario;
+        this.uri_perfil = uri_perfil;
+    }
+
+    public Uri getUri_perfil() {
+        return uri_perfil;
+    }
+
+    public void setUri_perfil(Uri uri_perfil) {
+        this.uri_perfil = uri_perfil;
     }
 
     public String getBairro() {

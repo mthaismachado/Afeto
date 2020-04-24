@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_app"
+    android:orientation="vertical"
     tools:context=".Activity.ListarDoacoesActivity">
 
 
@@ -12,10 +13,7 @@
         android:id="@+id/containerButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingTop="10dp">
 
         <ImageView
             android:id="@+id/btn_arrow_back"
@@ -50,17 +48,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_Categoria"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/lblCategoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/love_story_rough"
-            android:paddingTop="80dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="30dp"
             android:text="Categoria"
             android:textColor="@color/gray"
             android:textSize="60sp"
@@ -68,33 +64,19 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        app:layout_constraintTop_toBottomOf="@id/layout_Categoria"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </LinearLayout>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/naoEncontramosDoacoes"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
         android:textColor="@color/gray"
         android:textSize="20sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:text="Não encontramos nenhuma doação" />
 
     <ProgressBar
@@ -102,12 +84,9 @@
         android:layout_height="150dp"
         style="?android:attr/progressBarStyleLarge"
         android:visibility="gone"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center"
         android:id="@+id/progressBar"
         />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

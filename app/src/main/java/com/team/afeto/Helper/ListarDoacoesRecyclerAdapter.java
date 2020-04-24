@@ -4,11 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.team.afeto.Activity.ListarDoacoesActivity;
 import com.team.afeto.Model.Doacao;
 import com.team.afeto.R;
 
@@ -36,8 +39,14 @@ public class ListarDoacoesRecyclerAdapter extends RecyclerView.Adapter<ListarDoa
         Doacao doacao = mLista.get(position);
         viewHolder.mTxtTitulo.setText(doacao.getTitulo());
         viewHolder.mTxtValor.setText(doacao.getValor());
-        String strdoacao = doacao.getBairro().substring(0,1).toUpperCase() + doacao.getBairro().substring(1);
-        viewHolder.mTxtBairro.setText(strdoacao);
+        if(doacao.getBairro() != null){
+            String strdoacao = doacao.getBairro().substring(0,1).toUpperCase() + doacao.getBairro().substring(1);
+            viewHolder.mTxtBairro.setText(strdoacao);
+        }
+        if(doacao.getUri_perfil() != null){
+            Glide.with(context).load(doacao.getUri_perfil()).into(viewHolder.mDoacaoFoto);
+        }
+
     }
 
     @Override
@@ -50,7 +59,7 @@ public class ListarDoacoesRecyclerAdapter extends RecyclerView.Adapter<ListarDoa
         public TextView mTxtTitulo;
         public TextView mTxtValor;
         public TextView mTxtBairro;
-
+        public ImageView mDoacaoFoto;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -59,6 +68,7 @@ public class ListarDoacoesRecyclerAdapter extends RecyclerView.Adapter<ListarDoa
             mTxtTitulo = (TextView) itemView.findViewById(R.id.lblTitulo);
             mTxtValor = (TextView) itemView.findViewById(R.id.lblValor);
             mTxtBairro = (TextView) itemView.findViewById(R.id.lblBairro);
+            mDoacaoFoto = (ImageView) itemView.findViewById(R.id.doacao_image);
         }
     }
 

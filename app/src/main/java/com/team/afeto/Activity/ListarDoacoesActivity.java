@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,11 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.team.afeto.Helper.ListaMedicosRecyclerAdapter;
 import com.team.afeto.Helper.ListarDoacoesRecyclerAdapter;
 import com.team.afeto.Model.Doacao;
@@ -36,9 +40,11 @@ public class ListarDoacoesActivity extends AppCompatActivity {
 
     private List<Doacao> mlista;
     FirebaseFirestore db;
+    private StorageReference mStorageRef;
 
     private ImageView btn_Arrow_Back;
     private TextView mLblCategoria;
+    private int position = 0;
 
     ProgressBar mProgressBar;
 
@@ -59,10 +65,12 @@ public class ListarDoacoesActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         Intent intent = getIntent();
         String categoria = intent.getStringExtra("categoria");
 
         mLblCategoria.setText(categoria);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         realizaConsultaDoacoes(categoria);
     }
@@ -79,6 +87,8 @@ public class ListarDoacoesActivity extends AppCompatActivity {
 
         mlista = new ArrayList<>();
 
+        position = 0;
+
         // Create a reference to the cities collection
         CollectionReference doacoesRef = db.collection("doacoes");
 
@@ -91,9 +101,12 @@ public class ListarDoacoesActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Doacao doacao = new Doacao();
+                                recuperaImagemDoacao(document.getId(), position);
                                 doacao.setTitulo(document.getString("titulo"));
                                 doacao.setValor(document.getString("valor"));
                                 doacao.setBairro(document.getString("bairro"));
+                                position++;
+
                                 mlista.add(doacao);
 
                             }
@@ -112,6 +125,18 @@ public class ListarDoacoesActivity extends AppCompatActivity {
 
         adapter = new ListarDoacoesRecyclerAdapter(getApplicationContext(), mlista);
         mRecyclerView.setAdapter(adapter);
+    }
+
+    private void recuperaImagemDoacao(String uidDoacao, final int position){
+        StorageReference doacaoRef = mStorageRef.child("doacoes/" + uidDoacao + "/" + uidDoacao + 0 + ".jpg");
+        doacaoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                mlista.get(position).setUri_perfil(uri);
+                adapter = new ListarDoacoesRecyclerAdapter(getApplicationContext(), mlista);
+                mRecyclerView.setAdapter(adapter);
+            }
+        });
     }
 
 }

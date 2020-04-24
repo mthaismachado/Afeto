@@ -213,7 +213,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
     private void gravaImagemDoacao(String uidDoacao, Uri uri, final int indice) {
         Uri file = uri;
         StorageReference perfilRef = mStorageRef.child("doacoes/" + uidDoacao + "/" + uidDoacao + indice + ".jpg");
-        Toast.makeText(this, "Estamos salvando as imagens", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Estamos salvando as imagens", Toast.LENGTH_SHORT).show();
 
         perfilRef.putFile(file)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -287,7 +287,7 @@ public class CadastroDoacaoActivity extends AppCompatActivity implements Validat
 
             @Override
             public void onFinish() {
-                Toast.makeText(CadastroDoacaoActivity.this, "Estamos tentando salvar sua doação. Aguarde um pouco", Toast.LENGTH_LONG).show();
+                Toast.makeText(CadastroDoacaoActivity.this, "Estamos tentando salvar sua doação. Aguarde um pouco", Toast.LENGTH_SHORT).show();
             }
         }.start();
 
