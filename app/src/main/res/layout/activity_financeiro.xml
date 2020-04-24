@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Activity.FinanceiroActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerButtons"
         android:layout_width="match_parent"
@@ -42,7 +49,6 @@
             android:src="@drawable/ic_settings_black_24dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_medicos"
@@ -74,7 +80,21 @@
             app:layout_constraintTop_toBottomOf="@id/financiero" />
 
         <TextView
-            android:id="@+id/img_plus1"
+            android:id="@+id/txt_principaisGastos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Em uma gravidez, os principais gastos podem ser divididos em categorias, como roupas, medicamentos, casa, médicos e emergências.\n\nRoupas: tanto suas, quanto para o bebê. Avalie as roupas que não vão mais caber em você quando a barriga começar a crescer, porque pode ser necessário comprar novas. Pense em comprar roupas para o período de gravidez que possam ser usadas depois, mas também aproveite roupas de outras mães que possam emprestar.
+Já as roupas do bebê, saiba que eles crescem rápido e não duram muito. Por isso, além de dar uma olhada nas doações do Afeto, peça e aceite roupinhas usadas de amigos e parentes.\n
+Consultas médicas: Você precisará de, no mínimo, uma consulta mensal ao ginecologista. Nesses encontros serão avaliadas as principais funções vitais que interferem no desenvolvimento do feto, tais como pressão arterial, perfil sanguíneo, peso corporal e deficiência de vitaminas. Além do SUS oferecer essa consulta, existem médicos com preços populares, que podem ser acessados aqui no Afeto. \n
+Casa: Os gastos para adaptar a casa podem ser poupados no início de gravidez e começarem a ser pensados no final. Itens como berço, acessórios e brinquedos e outros, como tela nas janelas."
+            app:layout_constraintTop_toBottomOf="@id/btn_pgastos" />
+
+        <TextView
+            android:id="@+id/btnPlusPrincipaisGastos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -107,10 +127,21 @@
             android:layout_marginTop="25dp"
             android:background="@color/background_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_pgastos" />
+            app:layout_constraintTop_toBottomOf="@id/txt_principaisGastos" />
 
         <TextView
-            android:id="@+id/img_plus2"
+            android:id="@+id/txt_novasPrioridades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Você precisa estabelecer seus gastos voltados para o que é essencial nesse período, e, se possível, ter uma reserva de emergência. "
+            app:layout_constraintTop_toBottomOf="@id/btn_novaprioridades" />
+
+        <TextView
+            android:id="@+id/btnPlusNovasPrioridades"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -143,10 +174,21 @@
             android:layout_marginTop="25dp"
             android:background="@color/background_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_novaprioridades" />
+            app:layout_constraintTop_toBottomOf="@id/txt_novasPrioridades" />
 
         <TextView
-            android:id="@+id/img_plus3"
+            android:id="@+id/txt_consumo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="O mais indicado nesse momento é procurar por alternativas antes de comprar. Doações, bazares e conversar com outras mães recentes pode ajudar o consumo diminuir muito."
+            app:layout_constraintTop_toBottomOf="@id/btn_consumoC" />
+
+        <TextView
+            android:id="@+id/btnPlusConsumoConsciente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -173,16 +215,27 @@
             android:layout_marginStart="30dp" />
 
         <TextView
-            android:id="@+id/btn_medicoseeemedios"
+            android:id="@+id/btn_medicoseremedios"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="25dp"
             android:background="@color/background_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_consumoC" />
+            app:layout_constraintTop_toBottomOf="@id/txt_consumo" />
 
         <TextView
-            android:id="@+id/img_plus4"
+            android:id="@+id/txt_medicoseRemedios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Para esse período, você precisa de consultas com obstetra e, caso queira/precise, com outros profissionais, como psicólogos e nutricionistas. \nO SUS realiza consultas obstétricas, no mínimo, 06 (seis) consultas de acompanhamento pré-natal, sendo, preferencialmente, uma no primeiro trimestre, duas no segundo e três no terceiro trimestre da gestação; realização de 01 (uma) consulta no puerpério, até 42 dias após o nascimento.\nOs medicamentos e itens de farmácia serão indicados pelo seu obstetra, jamais se automedique durante a gravidez sem um aval profissional."
+            app:layout_constraintTop_toBottomOf="@id/btn_medicoseremedios" />
+
+        <TextView
+            android:id="@+id/btnPlusMedicosRemedios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -190,8 +243,8 @@
             android:text="+"
             android:textSize="@dimen/size_plus_financeiro"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btn_medicoseeemedios"
-            app:layout_constraintBottom_toBottomOf="@id/btn_medicoseeemedios"
+            app:layout_constraintTop_toTopOf="@id/btn_medicoseremedios"
+            app:layout_constraintBottom_toBottomOf="@id/btn_medicoseremedios"
             android:layout_marginEnd="10dp" />
 
         <TextView
@@ -200,8 +253,8 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="30dp"
             android:textSize="17sp"
-            app:layout_constraintLeft_toLeftOf="@id/btn_medicoseeemedios"
-            app:layout_constraintBottom_toBottomOf="@id/btn_medicoseeemedios"
+            app:layout_constraintLeft_toLeftOf="@id/btn_medicoseremedios"
+            app:layout_constraintBottom_toBottomOf="@id/btn_medicoseremedios"
             android:fontFamily="@font/hero"
             android:textColor="@color/gray"
             android:textStyle="bold"
@@ -215,10 +268,21 @@
             android:layout_marginTop="25dp"
             android:background="@color/background_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_medicoseeemedios" />
+            app:layout_constraintTop_toBottomOf="@id/txt_medicoseRemedios" />
 
         <TextView
-            android:id="@+id/img_plus5"
+            android:id="@+id/txt_naoTiveRenda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:background="@color/background_edit_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Você pode ter acesso à alguns benefícios como grávida.\nNo SUS, você procurar a rede pública mais próxima da sua casa e pedir o atendimento. Pode ser no posto de saúde mais próximo de casa, que a gestante pegará todas as informações necessárias para ter um obstetra de confiança para acompanhar sua gravidez pelo SUS, de forma gratuita.\nCaso você esteja desempregada até 5 anos, pode se informar com o governo sobre o salário maternidade. É um benefício antigo, instituído pela Receita federal, a qual tem direito de receber as trabalhadoras empregadas, empregadas domésticas, mulheres que contribuem pela guia do INSS. \nAlém disso, existem médicos com preços acessíveis, que podem ser consultados aqui no Afeto."
+            app:layout_constraintTop_toBottomOf="@id/btn_naotiverrenda" />
+
+        <TextView
+            android:id="@+id/btnPlusNaoTiverRenda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -247,6 +311,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
