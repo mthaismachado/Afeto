@@ -14,7 +14,12 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
+            minifyEnabled true
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -32,8 +37,8 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     //Firebase
     implementation 'com.google.firebase:firebase-auth:19.3.0'
-    implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
-    implementation 'com.google.firebase:firebase-firestore:21.4.1'
+    implementation 'com.google.firebase:firebase-firestore:21.4.2'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
     // FirebaseUI Storage only
     implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
     //Validator
@@ -42,7 +47,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     //ImageCropper
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
-    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    //MaskFormatter
+    implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
